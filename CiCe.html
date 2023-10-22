@@ -1,0 +1,626 @@
+<html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Contribution model</title>
+    <link href="header.css?version=4" rel="stylesheet" style="text/css"/>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 10px auto;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: green;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: lightgreen;
+        }
+
+        tr:hover {
+            background-color: purple;
+        }
+    </style>
+	<script src="echarts.js"></script>
+    <script src="../jss/More Detail.js?version=2"></script>
+    <script src="../jss/ShowModules.js"></script>
+    <script src="../jss/Compare.js?version=4"></script> 
+    <script src="../jss/wordcloud.js?version=6"></script>
+    <script src="test13.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:#100C2A;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            float: left;
+            width: 87%;
+            padding: 20px;
+            margin-top: 3%;
+            margin-left: 5%;
+            background-color: #ADD8E6;
+            border-radius: 10px;
+        }
+
+        .input {
+            display: block;
+            width: 15%;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid gray;
+            border-radius: 50px;
+            float: left;
+            margin-left: 110px;
+            background-color: #87CEEB; 
+        }
+        .pp{
+            display: block;
+            color:black;
+            margin-left: -10px;
+            margin-top: 20px;
+            position: absolute;
+        }
+        /* .input:hover{
+            content: "这是要显示的内容";
+            background: #fff;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        } */
+        .input2 {
+            display: block;
+            width: 320%;
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid gray;
+            border-radius: 50px;
+            float: left;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+
+        .button {
+            display: block;
+            width: 8%;
+            padding: 10px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-left: 260px;
+            margin-top: 120px;
+        }
+        .button2 {
+            display: block;
+            width: 35px;
+            margin: 10px auto;
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 50px;
+        }
+
+        .Info{
+            color:#fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header" aos="fade-down">
+        <div class="hcontainer">
+                <div class="box">
+                    <a href="About.html" class="item">About</a>
+                    <a href="Mainpage.html" class="item">Mainpage</a>
+                    <a href="#" class="item">Contribution Model</a>
+                    <a href="Comp.html" class="item">Comparation</a>
+                    <a href="Diag.html" class="item">Network Diagram</a>
+                </div>
+        </div>
+    </div>
+<p><br/><br/></p>
+
+    <div class="container">
+        <p class="pp">
+            Company name <br><br><br>
+            Module 
+        </p>
+        <p style="position:absolute;left:31%;margin-top: 20px;">
+            Year<br><br><br>
+            Month
+        </p>
+<div style="position:absolute;left:54%;top:15%;padding-left:4%;border-left: 2px dashed white;">
+<b>Contribution Intensity (CI)</b> 
+<br><span style="display:inline-block;vertical-align:middle;">  
+  <sup><u>the commits that this company contributed to the selected module</u></sup><br>
+  <sub>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspthe total commits that committed to this module</sub>  
+</span>
+<span>×100%</span>
+<br><br><b>Contribution Extent (CE)</b> 
+<br><span style="display:inline-block;vertical-align:middle;">  
+  <sup><u>the number of modules that this company contributed in the selected period</u></sup><br>
+  <sub>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspthe number of modules that have at least one commit in this period</sub>
+</span>
+<span>×100%</span>
+<br><br><b>Most Focused Module</b>
+<br><sup>The module receive the maximum counts of commits by this company.</sup>
+</div>
+        <select class="input" id="userInput">
+            <option value="Choose">Choose One Company</option>
+            <option value="amd.com">Advanced Micro Devices</option>
+            <option value="Airtame">Airtame</option>
+            <option value="Alexander Birkner">Alexander Birkner</option>
+            <option value="Alibaba">Alibaba</option>
+            <option value="Amazon Lab126">Amazon Lab126</option>
+            <option value="Applied Asynchrony">Applied Asynchrony</option>
+            <option value="Arnd Bergmann">Arnd Bergmann</option>
+            <option value="Baums on Web">Baums on Web</option>
+            <option value="Bell Canada">Bell Canada</option>
+            <option value="Berufsfortbildungswerk Gemeinnützige">Berufsfortbildungswerk Gemeinnützige</option>
+            <option value="Best Anthony">Best Anthony</option>
+            <option value="Bill Kendrick">Bill Kendrick</option>
+            <option value="Broadcom">Broadcom</option>
+            <option value="Capgo">Capgo</option>
+            <option value="Codemercs">Codemercs</option>
+            <option value="C-SKY Microsystems">C-SKY Microsystems</option>
+            <option value="Cybernetics">Cybernetics</option>
+            <option value="Daktronics">Daktronics</option>
+            <option value="David M. Loft">David M. Loft</option>
+            <option value="DH electronics">DH electronics</option>
+            <option value="ESD Electronics">ESD Electronics</option>
+            <option value="Exemail">Exemail</option>
+            <option value="Flash Ics">Flash Ics</option>
+            <option value="Freeserve">Freeserve</option>
+            <option value="Freie Universität Berlin">Freie Universität Berlin</option>
+            <option value="Fujikura">Fujikura</option>
+            <option value="GomSpace">GomSpace</option>
+            <option value="GreenSocs">GreenSocs</option>
+            <option value="Hammerspace">Hammerspace</option>
+            <option value="Huawei Technologies">Huawei Technologies</option>
+            <option value="Innominate Security Technologies">Innominate Security Technologies</option>
+            <option value="Intel">Intel</option>
+            <option value="Jack Cox">Jack Cox</option>
+            <option value="Jan-Ove Austell">Jan-Ove Austell</option>
+            <option value="Jason A. Donenfeld">Jason A. Donenfeld</option>
+            <option value="John D. Cox">John D. Cox</option>
+            <option value="Jolla">Jolla</option>
+            <option value="Kaspersky Lab">Kaspersky Lab</option>
+            <option value="Kirk and Sheila Holtmeier">Kirk and Sheila Holtmeier</option>
+            <option value="Kynetics">Kynetics</option>
+            <option value="Labus Media">Labus Media</option>
+            <option value="Lavabit">Lavabit</option>
+            <option value="Linaro">Linaro</option>
+            <option value="Linux Foundation">Linux Foundation</option>
+            <option value="Lumanate">Lumanate</option>
+            <option value="Mellanox Technologies">Mellanox Technologies</option>
+            <option value="Metanate">Metanate</option>
+            <option value="Michael Tratt">Michael Tratt</option>
+            <option value="Missing Link Electronics">Missing Link Electronics</option>
+            <option value="Motorola Mobility">Motorola Mobility</option>
+            <option value="Mozilla Corporation">Mozilla Corporation</option>
+            <option value="Naver Corporation">Naver Corporation</option>
+            <option value="Netcom">Netcom</option>
+            <option value="Netronome Systems">Netronome Systems</option>
+            <option value="Neural Games">Neural Games</option>
+            <option value="Nick Piggin">Nick Piggin</option>  
+            <option value="Oracle">Oracle</option>
+            <option value="Paul Sheridan">Paul Sheridan</option>
+            <option value="PC-Doctor">PC-Doctor</option>
+            <option value="Pedro Vanzella">Pedro Vanzella</option>
+            <option value="Plantronics">Plantronics</option>
+            <option value="Pluto">Pluto</option>
+            <option value="PMC-Sierra">PMC-Sierra</option>
+            <option value="Proton Technologies">Proton Technologies</option>
+            <option value="PTC">PTC</option>
+            <option value="QD Vision">QD Vision</option>
+            <option value="Red Hat">Red Hat</option>
+            <option value="Riot Games">Riot Games</option>
+            <option value="Rohm Semiconductor">Rohm Semiconductor</option>
+            <option value="Samsung Electronics">Samsung Electronics</option>
+            <option value="Sascha Salscheider">Sascha Salscheider</option>
+            <option value="Sebastian Radtke">Sebastian Radtke</option>
+            <option value="Silicom Connectivity Solutions">Silicom Connectivity Solutions</option>
+            <option value="SNS Telecom">SNS Telecom</option>
+            <option value="Softnautics">Softnautics</option>
+            <option value="Solution Space Limited">Solution Space Limited</option>
+            <option value="Sony">Sony</option>
+            <option value="Sony China">Sony China</option>
+            <option value="Steve N. Kass">Steve N. Kass</option>
+            <option value="SUSE Linux">SUSE Linux</option>
+            <option value="Synaptics">Synaptics</option>
+            <option value="SYSGO">SYSGO</option>
+            <option value="Tadpole Computer">Tadpole Computer</option>
+            <option value="TBS Biometrics">TBS Biometrics</option>
+            <option value="Technical University of Berlin">Technical University of Berlin</option>
+            <option value="Terascala">Terascala</option>
+            <option value="Texas Instruments">Texas Instruments</option>
+            <option value="The Linux Kernel Archives">The Linux Kernel Archives</option>
+            <option value="Tido Lucke">Tido Lucke</option>
+            <option value="Time Warner Cable Internet">Time Warner Cable Internet</option>
+            <option value="T-Online International">T-Online International</option>
+            <option value="Trusted Computer Solutions">Trusted Computer Solutions</option>
+            <option value="Tuffmail.com">Tuffmail.com</option>
+            <option value="UniCloud">UniCloud</option>
+            <option value="Vaisala">Vaisala</option>
+            <option value="Victor Toso">Victor Toso</option>
+            <option value="Vyatta">Vyatta</option>
+            <option value="WAGO Kontakttechnik">WAGO Kontakttechnik</option>
+            <option value="Wells Fargo">Wells Fargo</option>
+            <option value="WIA">WIA</option>
+            <option value="WOW Company">WOW Company</option>
+            <option value="Wupperonline">Wupperonline</option>
+            <option value="Zak Web">Zak Web</option>
+            <option value="Zoho">Zoho</option>
+            <option value="Zone Media OÜ">Zone Media OÜ</option>
+        </select>
+        <select class="input" type="text" id="yearInput" style="margin-right:35%">
+            <option value="2002">2002</option>
+            <option value="2003">2003</option>
+            <option value="2004">2004</option>
+            <option value="2005">2005</option>
+            <option value="2006">2006</option>
+            <option value="2007">2007</option>
+            <option value="2008">2008</option>
+            <option value="2009">2009</option>
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+        </select>
+        
+        <select class="input" id="mySelect" onchange="myFunction()">
+            <option value="0">More Details</option>
+            <option value="1">Module</option>
+            <option value="2">Submodule</option>
+            <option value="3">Submodule of submodule</option>
+        </select>
+        <select class="input" type="text" id="monthInput">
+            <option value="0">/</option>
+            <option value="01">1</option>
+            <option value="02">2</option>
+            <option value="03">3</option>
+            <option value="04">4</option>
+            <option value="05">5</option>
+            <option value="06">6</option>
+            <option value="07">7</option>
+            <option value="08">8</option>
+            <option value="09">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
+        <button class="button" onclick="handleClick()">Submit</button>
+    </div>
+
+    <!-- 首页展示 -->
+    <div id="CTC" style="position: absolute; width: 70%; height: 50%; left: 15%; top: 45%; border: 2px solid white;"></div>
+    <script src="../jss/CTC.js?version=1"></script>
+    <script src="echarts.js"></script>
+
+    <div style="position:absolute;left: 0px; top:130px;display: none" id="Cmpdiv"></div>
+
+    <table id="keywordTable" style="display: none;">
+        <tr>
+            <th>Company</th>
+            <th>Module</th>
+            <th>Counts</th>
+            <th>Percent in Company</th> <!-- 公司精力分配 -->
+            <th>Contribution intensity</th><!--贡献强度-->
+            <th>Contribution extent</th><!--贡献广度-->
+        </tr>
+    </table>
+
+    <div id="loadingSection" style="display: none; position: fixed; top: 20px; left: 20px;">
+        <input type="text" id="loadingText" value="Loading..." readonly>
+    </div>
+    <div id="flag" style="display: none;">
+        <input type="text" id="flagin" value="1">
+    </div>
+    <div id="showtags" style="display:none; position: absolute; top: 40%; left:30%; color: #fff;">
+        <p>
+            Contribution percent in company&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Contribution intensity<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Total contributions per year&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Word Cloud
+        </p>
+    </div>
+    <div id="CE" style="display:none; z-index: 2; position: absolute; top: 45%; left:70%;"class="Info"> 
+        <p>
+            Contribution Extent
+        </p>
+    </div>
+    <div id="outputDiv" style="display: none; z-index: 2; position: absolute;top:27%; left:10%" class="Info"></div>
+    <div id="outputDiv2" style="display: none; z-index: 2; position: absolute;top:45%; left:35%" class="Info"></div>
+    <div id="outputDiv3" style="display: none; z-index: 2; position: absolute;top:45%; left:70%" class="Info"></div>
+
+    <div id="PercentInCompany" style="width: 400px; height: 500px; display:none; position: absolute; top: 50%; left:5%"></div>
+    <div id="ContributionIntensity" style="width: 900px; height: 500px; display:none;position: absolute; top:50%; left:35%"></div>
+  
+    <div id="YearCommits" style="width: 800px; height: 500px;display:none; position: absolute; top:120%; left:5%"></div>  
+    <div id="wordcloud" style="width: 600px; height: 500px;display:none; position: absolute; top:120%; left:55%"></div> 
+
+    <div id="ModuleHistoryY" style="width: 600px; height: 400px;display:none ;position: absolute; top:190%; left:5%"></div>
+    <div id="ModuleHistoryM" style="width: 600px; height: 400px;display:none ;position: absolute; top:190%; left:50%"></div>
+
+	<script src="echarts.js"></script>
+    <script src="echarts-wordcloud.min.js"></script>
+
+    <!-- <div id="CIYear" style="width: 650px; height: 500px;display:none ;position: absolute; top:130%; left:5%"></div>
+    <div id="CIMonth" style="width: 650px; height: 500px;display:none ;position: absolute; top:130%; left:55%"></div>    
+    <div id="TOTYear" style="width: 650px; height: 500px;display:none ;position: absolute; top:60%; left:5%"></div>
+    <div id="TOTMonth" style="width: 650px; height: 500px;display:none ;position: absolute; top:60%; left:55%"></div> -->
+
+    <script>
+
+YearChart = echarts.init(document.getElementById('YearCommits'), 'dark');
+        // TOTYearChart = echarts.init(document.getElementById('TOTYear'), 'dark');
+        // TOTMonthChart = echarts.init(document.getElementById('TOTMonth'), 'dark');
+        // CIYearChart = echarts.init(document.getElementById('CIYear'), 'dark');
+        // CIMonthChart = echarts.init(document.getElementById('CIMonth'), 'dark');
+
+        PercentChart = echarts.init(document.getElementById('PercentInCompany'), 'dark');
+        // 指定图表的配置项和数据
+        var optionPC = {
+            title:{
+                text:'Contribution percent in company'
+            },
+        legend: {
+            data: [],
+            show: false
+        },
+        tooltip: {},
+        series: [
+            {
+            name:'Contribution percent in company',
+            type: 'pie',
+            data: [
+            ]
+            }
+        ]
+        }; 
+        // 使用刚指定的配置项和数据显示图表。
+        PercentChart.setOption(optionPC);
+
+        CI = echarts.init(document.getElementById('ContributionIntensity'), 'dark');
+        // 指定图表的配置项和数据
+        var optionCI = {
+            title:{text:'Contribution Intensity'},
+            xAxis: {
+                type: 'category',
+                data: []//PClegenddata
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                name: '数据',
+                type: 'bar',
+                data: [],//CIdata
+                stack:'aa'
+            }, {
+                name: '数据2',
+                type: 'bar',
+                data: [], //DCIdata
+                stack:'aa'
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        CI.setOption(optionCI);
+
+        MHY = echarts.init(document.getElementById('ModuleHistoryY'), 'dark');
+        MHM = echarts.init(document.getElementById('ModuleHistoryM'), 'dark');
+
+        let isScriptRunning = false; // 标记脚本运行状态
+        window.MODE = document.getElementById('mySelect').value;
+
+        function CmpClick(){
+            var constuser = document.getElementById('userInput').value; // 获取文本输入框的公司名称
+            var constyear = document.getElementById('yearInput').value; // 获取文本输入框的年份
+            var constuser2 = document.getElementById('userInput2').value;
+            if (constuser=='Choose' || constuser2=='Choose'){
+                return;
+            }else{
+            // alert("!!!");
+            document.getElementById('PercentInCompany').style.display='none';
+            document.getElementById('ContributionIntensity').style.display='none';
+            document.getElementById('ModuleHistoryY').style.display='none';
+            document.getElementById('ModuleHistoryM').style.display='none';
+            document.getElementById('outputDiv').style.display='none';
+            document.getElementById('outputDiv2').style.display='none';
+            document.getElementById('outputDiv3').style.display='block';
+            // document.getElementById('cmpdivs').style.display='none';
+            // document.getElementById('backdivs').style.display='block';
+            if(window.PRE!=''){
+                document.getElementById('outputDiv3').innerHTML="Comparation of module ["+window.PRE+"] between "
+                +constuser+" and "+constuser2;
+            }
+            runScript3(constuser, constuser2, constyear, window.MODE, window.PRE);
+            // document.getElementById('CIYear').style.display='block';
+            // document.getElementById('CIMonth').style.display='block';
+            // document.getElementById('TOTYear').style.display='block';
+            // document.getElementById('TOTMonth').style.display='block';
+        }
+        }
+
+        function CmpBack(){
+            var constuser = document.getElementById('userInput').value; // 获取文本输入框的公司名称
+            var constyear = document.getElementById('yearInput').value; // 获取文本输入框的年份
+            var constuser2 = document.getElementById('userInput2').value;
+            if (constuser=='Choose' || constuser2=='Choose'){
+                return;
+            }else{
+            // alert("!!!");
+            document.getElementById('PercentInCompany').style.display='block';
+            document.getElementById('ContributionIntensity').style.display='block';
+            document.getElementById('ModuleHistoryY').style.display='block';
+            document.getElementById('ModuleHistoryM').style.display='block';
+            document.getElementById('outputDiv').style.display='block';
+            document.getElementById('outputDiv2').style.display='block';
+            document.getElementById('outputDiv3').style.display='none';
+            // document.getElementById('cmpdivs').style.display='block';
+            // document.getElementById('backdivs').style.display='none';
+            // runScript3(constuser, constuser2, constyear, window.MODE, window.PRE);
+            // document.getElementById('CIYear').style.display='none';
+            // document.getElementById('CIMonth').style.display='none';
+            // document.getElementById('TOTYear').style.display='none';
+            // document.getElementById('TOTMonth').style.display='none';
+        }
+        }
+
+        function handleClick() {
+            var constuser = document.getElementById('userInput').value; // 获取文本输入框的公司名称
+            if (constuser == "Choose") {
+                return;
+            }
+            // alert("!!!")
+            document.getElementById('CE').style.display='block';
+            document.getElementById('outputDiv3').style.display='none';
+            document.getElementById('Cmpdiv').style.display='none';
+            document.getElementById('showtags').style.display='none';
+            window.PRE='';
+            // document.getElementById('CIYear').style.display='none';
+            // document.getElementById('CIMonth').style.display='none';
+            // document.getElementById('TOTYear').style.display='none';
+            // document.getElementById('TOTMonth').style.display='none';
+            document.getElementById('CTC').style.display='none';
+            var constyear = document.getElementById('yearInput').value; // 获取文本输入框的年份
+            var constmonth = document.getElementById('monthInput').value; // 获取文本输入框的月份
+            var mode = document.getElementById('mySelect').value;
+            window.MODE = mode;
+
+            clearTable(); // 清空表格内容
+            showLoading(); // 显示 loading 文本框
+
+            isScriptRunning = true; // 设置脚本运行状态为 true
+
+            // 调用 JavaScript 文件中的函数，并将参数作为参数传递
+            runScript(constuser, constyear, constmonth, mode);
+            runScript4(constuser);
+            initWordCloud(constuser);
+            // alert(DataInPIC.legend);
+            var mode = document.getElementById('mySelect').value;
+            if (document.getElementById('flag') == '1') {
+                // 脚本仍在运行中，继续等待
+                // setTimeout(checkScriptStatus, 1000);
+            } else {
+                // 脚本已经运行完毕
+                hideLoading();
+                document.getElementById('PercentInCompany').style.display='block';
+                document.getElementById('ContributionIntensity').style.display='block';
+            // 设置一个定时器，在一定时间后检查脚本是否已经运行完毕
+                // setTimeout(, 1000);
+                checkScriptStatus();
+            }
+        }
+        function checkScriptStatus() {
+            document.getElementById('outputDiv3').style.display='none';
+                    PercentChart.off('click');
+            // 获取表格
+            const table = document.getElementById('keywordTable');
+            // alert(table.rows.length);
+                // alert(mode);
+                if (window.MODE > 0 && window.MODE <= 3) {
+                    PercentChart.on('click', function (params) {
+                        event.stopPropagation();
+                    if (params.data && params.data.name!='Others'&&window.MODE<=3) {
+                        // 在这里可以根据 params.data.name 来执行不同的操作
+                        // alert(params.data.name);
+                        // 你可以在这里编写处理点击事件的代码
+                        const module = params.data.name; // 获取点击的单元格的内容
+                        var constuser = document.getElementById('userInput').value; // 获取文本输入框的公司名称
+                        var constyear = document.getElementById('yearInput').value; // 获取文本输入框的年份
+                        var constmonth = document.getElementById('monthInput').value; // 获取文本输入框的月份
+                        var pre = module;
+                        window.PRE = pre;
+                        runScript2(constuser, constyear, constmonth, window.MODE, pre, params.data.value);
+                        document.getElementById('Cmpdiv').style.display='block';
+                        var date = constyear + '-' + constmonth;
+                        if (constmonth == '0')
+                            date += '0'
+                        searchRows(date, module);
+                        // setTimeout(checkScriptStatus, 1000);
+                    }
+                });
+                }else{
+                    PercentChart.off('click');
+                }
+            }
+        
+
+        function clearTable() {
+            var table = document.getElementById('keywordTable');
+            while (table.rows.length > 1) {
+                table.deleteRow(1);
+            }
+        }
+
+        function showLoading() {
+            document.getElementById('loadingSection').style.display = 'block';
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingSection').style.display = 'none';
+        }
+
+        // 初始时调用 JavaScript 文件中的函数，并将初始参数作为参数传递
+        runScript(constuser, constyear, constmonth, mode);
+    </script>
+    <script>
+        window.addEventListener('message', function (event) {
+            if (event.data === 'hideLoading') {
+                hideLoading();
+            }
+        });
+    </script>
+    <script>
+        function clickCell() {
+            // 为表格的每一行的第二列添加点击事件
+            for (let i = 1; i < table.rows.length; i++) {
+                const cell = table.rows[i].cells[1]; // 获取每一行的第二列单元格
+
+                // 为单元格添加点击事件
+                cell.addEventListener('click', function () {
+                    clearTable();
+                    const module = this.innerHTML; // 获取点击的单元格的内容
+                    // alert('Module: ' + module); // 使用 alert 弹出内容
+                    var constuser = document.getElementById('userInput').value; // 获取文本输入框的公司名称
+                    var constyear = document.getElementById('yearInput').value; // 获取文本输入框的年份
+                    var constmonth = document.getElementById('monthInput').value; // 获取文本输入框的月份
+                    // var mode = parseInt(document.getElementById('mySelect').value)+1;
+                    var pre = module;
+                    // runScript2(constuser, constyear, constmonth, window.MODE, pre, pre, params.data.value);
+                    var date = constyear + '-' + constmonth;
+                    if (constmonth == '0')
+                        date += '0'
+                    searchRows(date, module);
+                    // setTimeout(checkScriptStatus, 1000);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

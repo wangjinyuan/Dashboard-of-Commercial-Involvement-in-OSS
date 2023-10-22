@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Compare between companies</title>
+    <meta charset="utf-8" />
+    <link href="header.css?version=4" rel="stylesheet" style="text/css"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:#100C2A;
+        }
+        /* 左侧列表样式 */
+        #leftList {
+            position:absolute;
+            width: 100%; /* 设置宽度为20% */
+            max-height: 200px;
+            color:white;
+            height: 130%;
+            overflow: auto; /* 添加滚动条 */
+            border: 6px solid #ccc; /* 添加边框 */
+        }
+        #leftList.selected{
+            background-color: #0077cc;
+        }
+        #rightList {
+            width: 100%; /* 设置宽度为20% */
+            max-height: 200px;
+            color:white;
+            height: 130%;
+            overflow: auto; /* 添加滚动条 */
+            border: 6px solid #ccc; /* 添加边框 */
+        }
+        #rightList.selected{
+            background-color: #0077cc;
+        }
+        .mb{
+            width:60%;
+            margin-top:10%;
+            /* padding: 20px; */
+            background-color: white;
+            color:black;
+            border-radius: 10px;
+        }
+        #lists {
+            margin: 0;
+            padding: 0;
+            height:20%;
+            position: absolute;
+        }
+        #lists div {
+            margin-left: -12%;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;  
+        }
+        #lists div:last-child {
+            border-bottom: none;
+        }
+        #lists div a {
+            text-decoration: none;
+            color: #0077cc;
+        }
+        #list .selected {
+            background-color: green;
+        }
+        #lists div a:hover {
+            text-decoration: underline;
+        }
+        .input {
+            display: block;
+            width: 25%;
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid gray;
+            border-radius: 50px;
+            float: left;
+            margin-right: 10px;
+            margin-left: 20%;
+        }
+        #lable {
+            color:aqua
+        }
+    </style>
+	<script src="echarts.js"></script>
+    <script src="jss/Compare.js?version=1"></script>
+</head>
+<body>
+<div class="header" aos="fade-down">
+        <div class="hcontainer">
+                <div class="box">
+                    <a href="About.html" class="item">About</a>
+                    <a href="Mainpage.html" class="item">Mainpage</a>
+                    <a href="CiCe.html" class="item">Contribution Model</a>
+                    <a href="#" class="item">Comparation</a>
+                    <a href="Diag.html" class="item">Network Diagram</a>
+                </div>
+        </div>
+    </div>
+<p><br/><br/></p>
+
+    <h1  style="text-align: center; color:lightgoldenrodyellow">Compare between companies</h1>
+    
+    <!-- 左侧列表 -->
+    <div id="lists" style="position: absolute; left:15%; width: 20%;">
+        <label for="leftList" id="lable">Selected Companies</label>
+        <ul id="leftList"></ul>
+    </div>
+
+    <!-- 右侧列表 -->
+    <div id="lists" style="position: absolute; left:55%; width: 20%;">
+        <label for="rightList" id="lable">Choose companies to compare</label>
+        <ul id="rightList">
+            <div onclick="selectItem(this)">Advanced Micro Devices</div>
+            <div onclick="selectItem(this)">Airtame</div>
+            <div onclick="selectItem(this)">Alexander Birkner</div>
+            <div onclick="selectItem(this)">Alibaba</div>
+            <div onclick="selectItem(this)">Amazon Lab126</div>
+            <div onclick="selectItem(this)">Applied Asynchrony</div>
+            <div onclick="selectItem(this)">Arnd Bergmann</div>
+            <div onclick="selectItem(this)">Baums on Web</div>
+            <div onclick="selectItem(this)">Bell Canada</div>
+            <div onclick="selectItem(this)">Berufsfortbildungswerk Gemeinnützige</div>
+            <div onclick="selectItem(this)">Best Anthony</div>
+            <div onclick="selectItem(this)">Bill Kendrick</div>
+            <div onclick="selectItem(this)">Broadcom</div>
+            <div onclick="selectItem(this)">Capgo</div>
+            <div onclick="selectItem(this)">Codemercs</div>
+            <div onclick="selectItem(this)">C-SKY Microsystems</div>
+            <div onclick="selectItem(this)">Cybernetics</div>
+            <div onclick="selectItem(this)">Daktronics</div>
+            <div onclick="selectItem(this)">David M. Loft</div>
+            <div onclick="selectItem(this)">DH electronics</div>
+            <div onclick="selectItem(this)">ESD Electronics</div>
+            <div onclick="selectItem(this)">Exemail</div>
+            <div onclick="selectItem(this)">Flash Ics</div>
+            <div onclick="selectItem(this)">Freeserve</div>
+            <div onclick="selectItem(this)">Freie Universität Berlin</div>
+            <div onclick="selectItem(this)">Fujikura</div>
+            <div onclick="selectItem(this)">GomSpace</div>
+            <div onclick="selectItem(this)">GreenSocs</div>
+            <div onclick="selectItem(this)">Hammerspace</div>
+            <div onclick="selectItem(this)">Huawei Technologies</div>
+            <div onclick="selectItem(this)">Innominate Security Technologies</div>
+            <div onclick="selectItem(this)">Intel</div>
+            <div onclick="selectItem(this)">Jack Cox</div>
+            <div onclick="selectItem(this)">Jan-Ove Austell</div>
+            <div onclick="selectItem(this)">Jason A. Donenfeld</div>
+            <div onclick="selectItem(this)">John D. Cox</div>
+            <div onclick="selectItem(this)">Jolla</div>
+            <div onclick="selectItem(this)">Kaspersky Lab</div>
+            <div onclick="selectItem(this)">Kirk and Sheila Holtmeier</div>
+            <div onclick="selectItem(this)">Kynetics</div>
+            <div onclick="selectItem(this)">Labus Media</div>
+            <div onclick="selectItem(this)">Lavabit</div>
+            <div onclick="selectItem(this)">Linaro</div>
+            <div onclick="selectItem(this)">Linux Foundation</div>
+            <div onclick="selectItem(this)">Lumanate</div>
+            <div onclick="selectItem(this)">Mellanox Technologies</div>
+            <div onclick="selectItem(this)">Metanate</div>
+            <div onclick="selectItem(this)">Michael Tratt</div>
+            <div onclick="selectItem(this)">Missing Link Electronics</div>
+            <div onclick="selectItem(this)">Motorola Mobility</div>
+            <div onclick="selectItem(this)">Mozilla Corporation</div>
+            <div onclick="selectItem(this)">Naver Corporation</div>
+            <div onclick="selectItem(this)">Netcom</div>
+            <div onclick="selectItem(this)">Netronome Systems</div>
+            <div onclick="selectItem(this)">Neural Games</div>
+            <div onclick="selectItem(this)">Nick Piggin</div>
+            <div onclick="selectItem(this)">Oracle</div>
+            <div onclick="selectItem(this)">Paul Sheridan</div>
+            <div onclick="selectItem(this)">PC-Doctor</div>
+            <div onclick="selectItem(this)">Pedro Vanzella</div>
+            <div onclick="selectItem(this)">Plantronics</div>
+            <div onclick="selectItem(this)">Pluto</div>
+            <div onclick="selectItem(this)">PMC-Sierra</div>
+            <div onclick="selectItem(this)">Proton Technologies</div>
+            <div onclick="selectItem(this)">PTC</div>
+            <div onclick="selectItem(this)">QD Vision</div>
+            <div onclick="selectItem(this)">Red Hat</div>
+            <div onclick="selectItem(this)">Riot Games</div>
+            <div onclick="selectItem(this)">Rohm Semiconductor</div>
+            <div onclick="selectItem(this)">Samsung Electronics</div>
+            <div onclick="selectItem(this)">Sascha Salscheider</div>
+            <div onclick="selectItem(this)">Sebastian Radtke</div>
+            <div onclick="selectItem(this)">Silicom Connectivity Solutions</div>
+            <div onclick="selectItem(this)">SNS Telecom</div>
+            <div onclick="selectItem(this)">Softnautics</div>
+            <div onclick="selectItem(this)">Solution Space Limited</div>
+            <div onclick="selectItem(this)">Sony</div>
+            <div onclick="selectItem(this)">Sony China</div>
+            <div onclick="selectItem(this)">Steve N. Kass</div>
+            <div onclick="selectItem(this)">SUSE Linux</div>
+            <div onclick="selectItem(this)">Synaptics</div>
+            <div onclick="selectItem(this)">SYSGO</div>
+            <div onclick="selectItem(this)">Tadpole Computer</div>
+            <div onclick="selectItem(this)">TBS Biometrics</div>
+            <div onclick="selectItem(this)">Technical University of Berlin</div>
+            <div onclick="selectItem(this)">Terascala</div>
+            <div onclick="selectItem(this)">Texas Instruments</div>
+            <div onclick="selectItem(this)">The Linux Kernel Archives</div>
+            <div onclick="selectItem(this)">Tido Lucke</div>
+            <div onclick="selectItem(this)">Time Warner Cable Internet</div>
+            <div onclick="selectItem(this)">T-Online International</div>
+            <div onclick="selectItem(this)">Trusted Computer Solutions</div>
+            <div onclick="selectItem(this)">Tuffmail.com</div>
+            <div onclick="selectItem(this)">UniCloud</div>
+            <div onclick="selectItem(this)">Vaisala</div>
+            <div onclick="selectItem(this)">Victor Toso</div>
+            <div onclick="selectItem(this)">Vyatta</div>
+            <div onclick="selectItem(this)">WAGO Kontakttechnik</div>
+            <div onclick="selectItem(this)">Wells Fargo</div>
+            <div onclick="selectItem(this)">WIA</div>
+            <div onclick="selectItem(this)">WOW Company</div>
+            <div onclick="selectItem(this)">Wupperonline</div>
+            <div onclick="selectItem(this)">Zak Web</div>
+            <div onclick="selectItem(this)">Zoho</div>
+            <div onclick="selectItem(this)">Zone Media OÜ</div>
+        </ul>
+    </div>
+
+    <!-- 移动按钮 -->
+    <div style = "position: absolute; left:44%; top:20%;display: flex;flex-direction: column; width: 10%;">
+        <button id="moveButton" class="mb" onclick="moveSelectedItem()">&lt;</button>
+        <button id="moveButton2" class="mb" onclick="moveSelectedItem2()">&gt;</button>
+        <button id="compareButton" class="mb" onclick="Compare()">Compare</button>
+    </div>
+    <div class="select-container" style="position: absolute; top:50%; left:8%; width: 70%;">
+        <select class="input" type="text" id="moduleInput">
+            <option value="Choose">Choose one module</option>
+            
+            <option value=".clang-format">.clang-format</option>
+            <option value=".cocciconfig">.cocciconfig</option>
+            <option value=".get_maintainer.ignore">.get_maintainer.ignore</option>
+            <option value=".gitattributes">.gitattributes</option>
+            <option value=".gitignore">.gitignore</option>
+            <option value=".mailmap">.mailmap</option>
+            <option value=".rustfmt.toml">.rustfmt.toml</option>
+            <option value="COPYING">COPYING</option>
+            <option value="COPYING.new">COPYING.new</option>
+            <option value="CREDITS">CREDITS</option>
+            <option value="Documentation">Documentation</option>
+            <option value="Documentation/80211">Documentation/80211</option>
+            <option value="Documentation/ABI">Documentation/ABI</option>
+            <option value="Documentation/BK-usage">Documentation/BK-usage</option>
+            <option value="Documentation/DocBook">Documentation/DocBook</option>
+            <option value="Documentation/EDID">Documentation/EDID</option>
+            <option value="Documentation/PCI">Documentation/PCI</option>
+            <option value="Documentation/RCU">Documentation/RCU</option>
+            <option value="Documentation/accelerators">Documentation/accelerators</option>
+            <option value="Documentation/accounting">Documentation/accounting</option>
+            <option value="Documentation/acpi">Documentation/acpi</option>
+            <option value="Documentation/admin-guide">Documentation/admin-guide</option>
+            <option value="Documentation/aoe">Documentation/aoe</option>
+            <option value="Documentation/arm">Documentation/arm</option>
+            <option value="Documentation/arm64">Documentation/arm64</option>
+            <option value="Documentation/auxdisplay">Documentation/auxdisplay</option>
+            <option value="Documentation/backlight">Documentation/backlight</option>
+            <option value="Documentation/blackfin">Documentation/blackfin</option>
+            <option value="Documentation/block">Documentation/block</option>
+            <option value="Documentation/blockdev">Documentation/blockdev</option>
+            <option value="Documentation/bpf">Documentation/bpf</option>
+            <option value="Documentation/bus-devices">Documentation/bus-devices</option>
+            <option value="Documentation/cdrom">Documentation/cdrom</option>
+            <option value="Documentation/cgroup-legacy">Documentation/cgroup-legacy</option>
+            <option value="Documentation/cgroup-v1">Documentation/cgroup-v1</option>
+            <option value="Documentation/cgroups">Documentation/cgroups</option>
+            <option value="Documentation/cma">Documentation/cma</option>
+            <option value="Documentation/connector">Documentation/connector</option>
+            <option value="Documentation/console">Documentation/console</option>
+            <option value="Documentation/controllers">Documentation/controllers</option>
+            <option value="Documentation/core-api">Documentation/core-api</option>
+            <option value="Documentation/cpu-freq">Documentation/cpu-freq</option>
+            <option value="Documentation/cpuidle">Documentation/cpuidle</option>
+            <option value="Documentation/crypto">Documentation/crypto</option>
+            <option value="Documentation/dev-tools">Documentation/dev-tools</option>
+            <option value="Documentation/development-process">Documentation/development-process</option>
+            <option value="Documentation/device-mapper">Documentation/device-mapper</option>
+            <option value="Documentation/devicetree">Documentation/devicetree</option>
+            <option value="Documentation/dmaengine">Documentation/dmaengine</option>
+            <option value="Documentation/doc-guide">Documentation/doc-guide</option>
+            <option value="Documentation/driver-api">Documentation/driver-api</option>
+            <option value="Documentation/driver-model">Documentation/driver-model</option>
+            <option value="Documentation/drivers">Documentation/drivers</option>
+            <option value="Documentation/dvb">Documentation/dvb</option>
+            <option value="Documentation/early-userspace">Documentation/early-userspace</option>
+            <option value="Documentation/extcon">Documentation/extcon</option>
+            <option value="Documentation/fault-injection">Documentation/fault-injection</option>
+            <option value="Documentation/fb">Documentation/fb</option>
+            <option value="Documentation/features">Documentation/features</option>
+            <option value="Documentation/filesystems">Documentation/filesystems</option>
+            <option value="Documentation/firmware-guide">Documentation/firmware-guide</option>
+            <option value="Documentation/firmware_class">Documentation/firmware_class</option>
+            <option value="Documentation/fmc">Documentation/fmc</option>
+            <option value="Documentation/fpga">Documentation/fpga</option>
+            <option value="Documentation/frv">Documentation/frv</option>
+            <option value="Documentation/fujitsu">Documentation/fujitsu</option>
+            <option value="Documentation/gpio">Documentation/gpio</option>
+            <option value="Documentation/gpu">Documentation/gpu</option>
+            <option value="Documentation/hid">Documentation/hid</option>
+            <option value="Documentation/hrtimer">Documentation/hrtimer</option>
+            <option value="Documentation/hwmon">Documentation/hwmon</option>
+            <option value="Documentation/i2c">Documentation/i2c</option>
+            <option value="Documentation/i2o">Documentation/i2o</option>
+            <option value="Documentation/i386">Documentation/i386</option>
+            <option value="Documentation/ia64">Documentation/ia64</option>
+            <option value="Documentation/ide">Documentation/ide</option>
+            <option value="Documentation/iio">Documentation/iio</option>
+            <option value="Documentation/images">Documentation/images</option>
+            <option value="Documentation/infiniband">Documentation/infiniband</option>
+            <option value="Documentation/input">Documentation/input</option>
+            <option value="Documentation/interconnect">Documentation/interconnect</option>
+            <option value="Documentation/ioctl">Documentation/ioctl</option>
+            <option value="Documentation/isdn">Documentation/isdn</option>
+            <option value="Documentation/ja_JP">Documentation/ja_JP</option>
+            <option value="Documentation/kbuild">Documentation/kbuild</option>
+            <option value="Documentation/kdump">Documentation/kdump</option>
+            <option value="Documentation/kernel-hacking">Documentation/kernel-hacking</option>
+            <option value="Documentation/ko_KR">Documentation/ko_KR</option>
+            <option value="Documentation/kvm">Documentation/kvm</option>
+            <option value="Documentation/laptops">Documentation/laptops</option>
+            <option value="Documentation/leds">Documentation/leds</option>
+            <option value="Documentation/lguest">Documentation/lguest</option>
+            <option value="Documentation/lightnvm">Documentation/lightnvm</option>
+            <option value="Documentation/linux_tv">Documentation/linux_tv</option>
+            <option value="Documentation/litmus-tests">Documentation/litmus-tests</option>
+            <option value="Documentation/livepatch">Documentation/livepatch</option>
+            <option value="Documentation/locking">Documentation/locking</option>
+            <option value="Documentation/loongarch">Documentation/loongarch</option>
+            <option value="Documentation/m68k">Documentation/m68k</option>
+            <option value="Documentation/maintainer">Documentation/maintainer</option>
+            <option value="Documentation/make">Documentation/make</option>
+            <option value="Documentation/md">Documentation/md</option>
+            <option value="Documentation/media">Documentation/media</option>
+            <option value="Documentation/memory-devices">Documentation/memory-devices</option>
+            <option value="Documentation/metag">Documentation/metag</option>
+            <option value="Documentation/mhi">Documentation/mhi</option>
+            <option value="Documentation/mic">Documentation/mic</option>
+            <option value="Documentation/mips">Documentation/mips</option>
+            <option value="Documentation/misc-devices">Documentation/misc-devices</option>
+            <option value="Documentation/mm">Documentation/mm</option>
+            <option value="Documentation/mmc">Documentation/mmc</option>
+            <option value="Documentation/mn10300">Documentation/mn10300</option>
+            <option value="Documentation/mtd">Documentation/mtd</option>
+            <option value="Documentation/namespaces">Documentation/namespaces</option>
+            <option value="Documentation/netlabel">Documentation/netlabel</option>
+            <option value="Documentation/networking">Documentation/networking</option>
+            <option value="Documentation/nfc">Documentation/nfc</option>
+            <option value="Documentation/nios2">Documentation/nios2</option>
+            <option value="Documentation/nvdimm">Documentation/nvdimm</option>
+            <option value="Documentation/nvmem">Documentation/nvmem</option>
+            <option value="Documentation/openrisc">Documentation/openrisc</option>
+            <option value="Documentation/parisc">Documentation/parisc</option>
+            <option value="Documentation/pcmcia">Documentation/pcmcia</option>
+            <option value="Documentation/peci">Documentation/peci</option>
+            <option value="Documentation/perf">Documentation/perf</option>
+            <option value="Documentation/perf_counter">Documentation/perf_counter</option>
+            <option value="Documentation/phy">Documentation/phy</option>
+            <option value="Documentation/platform">Documentation/platform</option>
+            <option value="Documentation/power">Documentation/power</option>
+            <option value="Documentation/powerpc">Documentation/powerpc</option>
+            <option value="Documentation/pps">Documentation/pps</option>
+            <option value="Documentation/prctl">Documentation/prctl</option>
+            <option value="Documentation/process">Documentation/process</option>
+            <option value="Documentation/pti">Documentation/pti</option>
+            <option value="Documentation/ptp">Documentation/ptp</option>
+            <option value="Documentation/rapidio">Documentation/rapidio</option>
+            <option value="Documentation/riscv">Documentation/riscv</option>
+            <option value="Documentation/rust">Documentation/rust</option>
+            <option value="Documentation/s390">Documentation/s390</option>
+            <option value="Documentation/scheduler">Documentation/scheduler</option>
+            <option value="Documentation/scsi">Documentation/scsi</option>
+            <option value="Documentation/security">Documentation/security</option>
+            <option value="Documentation/serial">Documentation/serial</option>
+            <option value="Documentation/sh">Documentation/sh</option>
+            <option value="Documentation/sound">Documentation/sound</option>
+            <option value="Documentation/sparc">Documentation/sparc</option>
+            <option value="Documentation/sphinx">Documentation/sphinx</option>
+            <option value="Documentation/sphinx-static">Documentation/sphinx-static</option>
+            <option value="Documentation/spi">Documentation/spi</option>
+            <option value="Documentation/staging">Documentation/staging</option>
+            <option value="Documentation/sysctl">Documentation/sysctl</option>
+            <option value="Documentation/target">Documentation/target</option>
+            <option value="Documentation/telephony">Documentation/telephony</option>
+            <option value="Documentation/thermal">Documentation/thermal</option>
+            <option value="Documentation/timers">Documentation/timers</option>
+            <option value="Documentation/tools">Documentation/tools</option>
+            <option value="Documentation/tpm">Documentation/tpm</option>
+            <option value="Documentation/trace">Documentation/trace</option>
+            <option value="Documentation/translations">Documentation/translations</option>
+            <option value="Documentation/uml">Documentation/uml</option>
+            <option value="Documentation/usb">Documentation/usb</option>
+            <option value="Documentation/userspace-api">Documentation/userspace-api</option>
+            <option value="Documentation/vDSO">Documentation/vDSO</option>
+            <option value="Documentation/video4linux">Documentation/video4linux</option>
+            <option value="Documentation/virt">Documentation/virt</option>
+            <option value="Documentation/virtual">Documentation/virtual</option>
+            <option value="Documentation/vm">Documentation/vm</option>
+            <option value="Documentation/w1">Documentation/w1</option>
+            <option value="Documentation/watchdog">Documentation/watchdog</option>
+            <option value="Documentation/wimax">Documentation/wimax</option>
+            <option value="Documentation/x86">Documentation/x86</option>
+            <option value="Documentation/x86_64">Documentation/x86_64</option>
+            <option value="Documentation/xilinx">Documentation/xilinx</option>
+            <option value="Documentation/xtensa">Documentation/xtensa</option>
+            <option value="Documentation/zh_CN">Documentation/zh_CN</option>
+            <option value="Kbuild">Kbuild</option>
+            <option value="Kconfig">Kconfig</option>
+            <option value="LICENSES">LICENSES</option>
+            <option value="LICENSES/deprecated">LICENSES/deprecated</option>
+            <option value="LICENSES/dual">LICENSES/dual</option>
+            <option value="LICENSES/other">LICENSES/other</option>
+            <option value="LICENSES/preferred">LICENSES/preferred</option>
+            <option value="MAINTAINERS">MAINTAINERS</option>
+            <option value="Makefile">Makefile</option>
+            <option value="README">README</option>
+            <option value="README.md">README.md</option>
+            <option value="REPORTING-BUGS">REPORTING-BUGS</option>
+            <option value="arch">arch</option>
+            <option value="arch/alpha">arch/alpha</option>
+            <option value="arch/arc">arch/arc</option>
+            <option value="arch/arm">arch/arm</option>
+            <option value="arch/arm26">arch/arm26</option>
+            <option value="arch/arm64">arch/arm64</option>
+            <option value="arch/avr32">arch/avr32</option>
+            <option value="arch/blackfin">arch/blackfin</option>
+            <option value="arch/c6x">arch/c6x</option>
+            <option value="arch/cris">arch/cris</option>
+            <option value="arch/csky">arch/csky</option>
+            <option value="arch/frv">arch/frv</option>
+            <option value="arch/h8300">arch/h8300</option>
+            <option value="arch/hexagon">arch/hexagon</option>
+            <option value="arch/i386">arch/i386</option>
+            <option value="arch/ia64">arch/ia64</option>
+            <option value="arch/loongarch">arch/loongarch</option>
+            <option value="arch/m32r">arch/m32r</option>
+            <option value="arch/m68k">arch/m68k</option>
+            <option value="arch/m68knommu">arch/m68knommu</option>
+            <option value="arch/metag">arch/metag</option>
+            <option value="arch/microblaze">arch/microblaze</option>
+            <option value="arch/mips">arch/mips</option>
+            <option value="arch/mn10300">arch/mn10300</option>
+            <option value="arch/nds32">arch/nds32</option>
+            <option value="arch/nios2">arch/nios2</option>
+            <option value="arch/openrisc">arch/openrisc</option>
+            <option value="arch/parisc">arch/parisc</option>
+            <option value="arch/powerpc">arch/powerpc</option>
+            <option value="arch/ppc">arch/ppc</option>
+            <option value="arch/ppc64">arch/ppc64</option>
+            <option value="arch/riscv">arch/riscv</option>
+            <option value="arch/s390">arch/s390</option>
+            <option value="arch/score">arch/score</option>
+            <option value="arch/sh">arch/sh</option>
+            <option value="arch/sh64">arch/sh64</option>
+            <option value="arch/sparc">arch/sparc</option>
+            <option value="arch/sparc64">arch/sparc64</option>
+            <option value="arch/tile">arch/tile</option>
+            <option value="arch/um">arch/um</option>
+            <option value="arch/unicore32">arch/unicore32</option>
+            <option value="arch/v850">arch/v850</option>
+            <option value="arch/x86">arch/x86</option>
+            <option value="arch/x86_64">arch/x86_64</option>
+            <option value="arch/xtensa">arch/xtensa</option>
+            <option value="arm">arm</option>
+            <option value="arm/configs">arm/configs</option>
+            <option value="block">block</option>
+            <option value="block/partitions">block/partitions</option>
+            <option value="certs">certs</option>
+            <option value="crypto">crypto</option>
+            <option value="crypto/asymmetric_keys">crypto/asymmetric_keys</option>
+            <option value="crypto/async_tx">crypto/async_tx</option>
+            <option value="dir.c">dir.c</option>
+            <option value="drivers">drivers</option>
+            <option value="drivers/accessibility">drivers/accessibility</option>
+            <option value="drivers/acorn">drivers/acorn</option>
+            <option value="drivers/acpi">drivers/acpi</option>
+            <option value="drivers/amba">drivers/amba</option>
+            <option value="drivers/android">drivers/android</option>
+            <option value="drivers/ata">drivers/ata</option>
+            <option value="drivers/atm">drivers/atm</option>
+            <option value="drivers/auxdisplay">drivers/auxdisplay</option>
+            <option value="drivers/base">drivers/base</option>
+            <option value="drivers/bcma">drivers/bcma</option>
+            <option value="drivers/block">drivers/block</option>
+            <option value="drivers/bluetooth">drivers/bluetooth</option>
+            <option value="drivers/bus">drivers/bus</option>
+            <option value="drivers/cdrom">drivers/cdrom</option>
+            <option value="drivers/char">drivers/char</option>
+            <option value="drivers/clk">drivers/clk</option>
+            <option value="drivers/clocksource">drivers/clocksource</option>
+            <option value="drivers/comedi">drivers/comedi</option>
+            <option value="drivers/connector">drivers/connector</option>
+            <option value="drivers/coresight">drivers/coresight</option>
+            <option value="drivers/counter">drivers/counter</option>
+            <option value="drivers/cpufreq">drivers/cpufreq</option>
+            <option value="drivers/cpuidle">drivers/cpuidle</option>
+            <option value="drivers/crypto">drivers/crypto</option>
+            <option value="drivers/cxl">drivers/cxl</option>
+            <option value="drivers/dax">drivers/dax</option>
+            <option value="drivers/dca">drivers/dca</option>
+            <option value="drivers/devfreq">drivers/devfreq</option>
+            <option value="drivers/dio">drivers/dio</option>
+            <option value="drivers/dma">drivers/dma</option>
+            <option value="drivers/dma-buf">drivers/dma-buf</option>
+            <option value="drivers/edac">drivers/edac</option>
+            <option value="drivers/eisa">drivers/eisa</option>
+            <option value="drivers/extcon">drivers/extcon</option>
+            <option value="drivers/fc4">drivers/fc4</option>
+            <option value="drivers/firewire">drivers/firewire</option>
+            <option value="drivers/firmware">drivers/firmware</option>
+            <option value="drivers/fmc">drivers/fmc</option>
+            <option value="drivers/fpga">drivers/fpga</option>
+            <option value="drivers/fsi">drivers/fsi</option>
+            <option value="drivers/gnss">drivers/gnss</option>
+            <option value="drivers/gpio">drivers/gpio</option>
+            <option value="drivers/gpu">drivers/gpu</option>
+            <option value="drivers/greybus">drivers/greybus</option>
+            <option value="drivers/hid">drivers/hid</option>
+            <option value="drivers/hsi">drivers/hsi</option>
+            <option value="drivers/hte">drivers/hte</option>
+            <option value="drivers/hv">drivers/hv</option>
+            <option value="drivers/hwmon">drivers/hwmon</option>
+            <option value="drivers/hwspinlock">drivers/hwspinlock</option>
+            <option value="drivers/hwtracing">drivers/hwtracing</option>
+            <option value="drivers/i2c">drivers/i2c</option>
+            <option value="drivers/i3c">drivers/i3c</option>
+            <option value="drivers/ide">drivers/ide</option>
+            <option value="drivers/idle">drivers/idle</option>
+            <option value="drivers/ieee1394">drivers/ieee1394</option>
+            <option value="drivers/ieee802154">drivers/ieee802154</option>
+            <option value="drivers/iio">drivers/iio</option>
+            <option value="drivers/infiniband">drivers/infiniband</option>
+            <option value="drivers/input">drivers/input</option>
+            <option value="drivers/interconnect">drivers/interconnect</option>
+            <option value="drivers/iommu">drivers/iommu</option>
+            <option value="drivers/ipack">drivers/ipack</option>
+            <option value="drivers/irqchip">drivers/irqchip</option>
+            <option value="drivers/isdn">drivers/isdn</option>
+            <option value="drivers/kvm">drivers/kvm</option>
+            <option value="drivers/leds">drivers/leds</option>
+            <option value="drivers/lguest">drivers/lguest</option>
+            <option value="drivers/lightnvm">drivers/lightnvm</option>
+            <option value="drivers/macintosh">drivers/macintosh</option>
+            <option value="drivers/mailbox">drivers/mailbox</option>
+            <option value="drivers/mca">drivers/mca</option>
+            <option value="drivers/mcb">drivers/mcb</option>
+            <option value="drivers/md">drivers/md</option>
+            <option value="drivers/media">drivers/media</option>
+            <option value="drivers/memory">drivers/memory</option>
+            <option value="drivers/memstick">drivers/memstick</option>
+            <option value="drivers/message">drivers/message</option>
+            <option value="drivers/mfd">drivers/mfd</option>
+            <option value="drivers/misc">drivers/misc</option>
+            <option value="drivers/mmc">drivers/mmc</option>
+            <option value="drivers/most">drivers/most</option>
+            <option value="drivers/mtd">drivers/mtd</option>
+            <option value="drivers/mux">drivers/mux</option>
+            <option value="drivers/net">drivers/net</option>
+            <option value="drivers/nfc">drivers/nfc</option>
+            <option value="drivers/ntb">drivers/ntb</option>
+            <option value="drivers/nubus">drivers/nubus</option>
+            <option value="drivers/nvdimm">drivers/nvdimm</option>
+            <option value="drivers/nvme">drivers/nvme</option>
+            <option value="drivers/nvmem">drivers/nvmem</option>
+            <option value="drivers/of">drivers/of</option>
+            <option value="drivers/opp">drivers/opp</option>
+            <option value="drivers/oprofile">drivers/oprofile</option>
+            <option value="drivers/parisc">drivers/parisc</option>
+            <option value="drivers/parport">drivers/parport</option>
+            <option value="drivers/pci">drivers/pci</option>
+            <option value="drivers/pcmcia">drivers/pcmcia</option>
+            <option value="drivers/peci">drivers/peci</option>
+            <option value="drivers/perf">drivers/perf</option>
+            <option value="drivers/phy">drivers/phy</option>
+            <option value="drivers/pinctrl">drivers/pinctrl</option>
+            <option value="drivers/platform">drivers/platform</option>
+            <option value="drivers/pnp">drivers/pnp</option>
+            <option value="drivers/power">drivers/power</option>
+            <option value="drivers/powercap">drivers/powercap</option>
+            <option value="drivers/pps">drivers/pps</option>
+            <option value="drivers/ps3">drivers/ps3</option>
+            <option value="drivers/ptp">drivers/ptp</option>
+            <option value="drivers/pwm">drivers/pwm</option>
+            <option value="drivers/rapidio">drivers/rapidio</option>
+            <option value="drivers/ras">drivers/ras</option>
+            <option value="drivers/regulator">drivers/regulator</option>
+            <option value="drivers/remoteproc">drivers/remoteproc</option>
+            <option value="drivers/reset">drivers/reset</option>
+            <option value="drivers/rpmsg">drivers/rpmsg</option>
+            <option value="drivers/rtc">drivers/rtc</option>
+            <option value="drivers/s390">drivers/s390</option>
+            <option value="drivers/sbus">drivers/sbus</option>
+            <option value="drivers/scsi">drivers/scsi</option>
+            <option value="drivers/serial">drivers/serial</option>
+            <option value="drivers/sfi">drivers/sfi</option>
+            <option value="drivers/sh">drivers/sh</option>
+            <option value="drivers/siox">drivers/siox</option>
+            <option value="drivers/slimbus">drivers/slimbus</option>
+            <option value="drivers/sn">drivers/sn</option>
+            <option value="drivers/soc">drivers/soc</option>
+            <option value="drivers/soundwire">drivers/soundwire</option>
+            <option value="drivers/spi">drivers/spi</option>
+            <option value="drivers/spmi">drivers/spmi</option>
+            <option value="drivers/ssb">drivers/ssb</option>
+            <option value="drivers/ssbi">drivers/ssbi</option>
+            <option value="drivers/staging">drivers/staging</option>
+            <option value="drivers/target">drivers/target</option>
+            <option value="drivers/tc">drivers/tc</option>
+            <option value="drivers/tee">drivers/tee</option>
+            <option value="drivers/telephony">drivers/telephony</option>
+            <option value="drivers/thermal">drivers/thermal</option>
+            <option value="drivers/thunderbolt">drivers/thunderbolt</option>
+            <option value="drivers/tty">drivers/tty</option>
+            <option value="drivers/ufs">drivers/ufs</option>
+            <option value="drivers/uio">drivers/uio</option>
+            <option value="drivers/usb">drivers/usb</option>
+            <option value="drivers/uwb">drivers/uwb</option>
+            <option value="drivers/vdpa">drivers/vdpa</option>
+            <option value="drivers/vfio">drivers/vfio</option>
+            <option value="drivers/vhost">drivers/vhost</option>
+            <option value="drivers/video">drivers/video</option>
+            <option value="drivers/virt">drivers/virt</option>
+            <option value="drivers/virtio">drivers/virtio</option>
+            <option value="drivers/visorbus">drivers/visorbus</option>
+            <option value="drivers/vlynq">drivers/vlynq</option>
+            <option value="drivers/vme">drivers/vme</option>
+            <option value="drivers/w1">drivers/w1</option>
+            <option value="drivers/watchdog">drivers/watchdog</option>
+            <option value="drivers/xen">drivers/xen</option>
+            <option value="drivers/zorro">drivers/zorro</option>
+            <option value="firmware">firmware</option>
+            <option value="firmware/3com">firmware/3com</option>
+            <option value="firmware/acenic">firmware/acenic</option>
+            <option value="firmware/adaptec">firmware/adaptec</option>
+            <option value="firmware/advansys">firmware/advansys</option>
+            <option value="firmware/av7110">firmware/av7110</option>
+            <option value="firmware/bnx2">firmware/bnx2</option>
+            <option value="firmware/bnx2x">firmware/bnx2x</option>
+            <option value="firmware/cis">firmware/cis</option>
+            <option value="firmware/cpia2">firmware/cpia2</option>
+            <option value="firmware/cxgb3">firmware/cxgb3</option>
+            <option value="firmware/dabusb">firmware/dabusb</option>
+            <option value="firmware/dsp56k">firmware/dsp56k</option>
+            <option value="firmware/e100">firmware/e100</option>
+            <option value="firmware/edgeport">firmware/edgeport</option>
+            <option value="firmware/emi26">firmware/emi26</option>
+            <option value="firmware/emi62">firmware/emi62</option>
+            <option value="firmware/ess">firmware/ess</option>
+            <option value="firmware/isci">firmware/isci</option>
+            <option value="firmware/kaweth">firmware/kaweth</option>
+            <option value="firmware/keyspan">firmware/keyspan</option>
+            <option value="firmware/keyspan_pda">firmware/keyspan_pda</option>
+            <option value="firmware/korg">firmware/korg</option>
+            <option value="firmware/matrox">firmware/matrox</option>
+            <option value="firmware/myricom">firmware/myricom</option>
+            <option value="firmware/ositech">firmware/ositech</option>
+            <option value="firmware/qlogic">firmware/qlogic</option>
+            <option value="firmware/r128">firmware/r128</option>
+            <option value="firmware/radeon">firmware/radeon</option>
+            <option value="firmware/sb16">firmware/sb16</option>
+            <option value="firmware/slicoss">firmware/slicoss</option>
+            <option value="firmware/sun">firmware/sun</option>
+            <option value="firmware/sxg">firmware/sxg</option>
+            <option value="firmware/tehuti">firmware/tehuti</option>
+            <option value="firmware/tigon">firmware/tigon</option>
+            <option value="firmware/ttusb-budget">firmware/ttusb-budget</option>
+            <option value="firmware/vicam">firmware/vicam</option>
+            <option value="firmware/yam">firmware/yam</option>
+            <option value="firmware/yamaha">firmware/yamaha</option>
+            <option value="fs">fs</option>
+            <option value="fs/9p">fs/9p</option>
+            <option value="fs/adfs">fs/adfs</option>
+            <option value="fs/affs">fs/affs</option>
+            <option value="fs/afs">fs/afs</option>
+            <option value="fs/autofs">fs/autofs</option>
+            <option value="fs/autofs4">fs/autofs4</option>
+            <option value="fs/befs">fs/befs</option>
+            <option value="fs/bfs">fs/bfs</option>
+            <option value="fs/btrfs">fs/btrfs</option>
+            <option value="fs/cachefiles">fs/cachefiles</option>
+            <option value="fs/ceph">fs/ceph</option>
+            <option value="fs/cifs">fs/cifs</option>
+            <option value="fs/cifs_common">fs/cifs_common</option>
+            <option value="fs/cifsd">fs/cifsd</option>
+            <option value="fs/coda">fs/coda</option>
+            <option value="fs/configfs">fs/configfs</option>
+            <option value="fs/cramfs">fs/cramfs</option>
+            <option value="fs/crypto">fs/crypto</option>
+            <option value="fs/debugfs">fs/debugfs</option>
+            <option value="fs/devfs">fs/devfs</option>
+            <option value="fs/devpts">fs/devpts</option>
+            <option value="fs/dlm">fs/dlm</option>
+            <option value="fs/ecryptfs">fs/ecryptfs</option>
+            <option value="fs/efivarfs">fs/efivarfs</option>
+            <option value="fs/efs">fs/efs</option>
+            <option value="fs/erofs">fs/erofs</option>
+            <option value="fs/exfat">fs/exfat</option>
+            <option value="fs/exofs">fs/exofs</option>
+            <option value="fs/exportfs">fs/exportfs</option>
+            <option value="fs/ext2">fs/ext2</option>
+            <option value="fs/ext3">fs/ext3</option>
+            <option value="fs/ext4">fs/ext4</option>
+            <option value="fs/f2fs">fs/f2fs</option>
+            <option value="fs/fat">fs/fat</option>
+            <option value="fs/freevxfs">fs/freevxfs</option>
+            <option value="fs/fscache">fs/fscache</option>
+            <option value="fs/fuse">fs/fuse</option>
+            <option value="fs/gfs2">fs/gfs2</option>
+            <option value="fs/hfs">fs/hfs</option>
+            <option value="fs/hfsplus">fs/hfsplus</option>
+            <option value="fs/hostfs">fs/hostfs</option>
+            <option value="fs/hpfs">fs/hpfs</option>
+            <option value="fs/hppfs">fs/hppfs</option>
+            <option value="fs/hugetlbfs">fs/hugetlbfs</option>
+            <option value="fs/iomap">fs/iomap</option>
+            <option value="fs/isofs">fs/isofs</option>
+            <option value="fs/jbd">fs/jbd</option>
+            <option value="fs/jbd2">fs/jbd2</option>
+            <option value="fs/jffs">fs/jffs</option>
+            <option value="fs/jffs2">fs/jffs2</option>
+            <option value="fs/jfs">fs/jfs</option>
+            <option value="fs/kernfs">fs/kernfs</option>
+            <option value="fs/ksmbd">fs/ksmbd</option>
+            <option value="fs/lockd">fs/lockd</option>
+            <option value="fs/logfs">fs/logfs</option>
+            <option value="fs/minix">fs/minix</option>
+            <option value="fs/msdos">fs/msdos</option>
+            <option value="fs/ncpfs">fs/ncpfs</option>
+            <option value="fs/netfs">fs/netfs</option>
+            <option value="fs/nfs">fs/nfs</option>
+            <option value="fs/nfs_common">fs/nfs_common</option>
+            <option value="fs/nfsd">fs/nfsd</option>
+            <option value="fs/nilfs2">fs/nilfs2</option>
+            <option value="fs/nls">fs/nls</option>
+            <option value="fs/notify">fs/notify</option>
+            <option value="fs/ntfs">fs/ntfs</option>
+            <option value="fs/ntfs3">fs/ntfs3</option>
+            <option value="fs/ocfs2">fs/ocfs2</option>
+            <option value="fs/omfs">fs/omfs</option>
+            <option value="fs/openpromfs">fs/openpromfs</option>
+            <option value="fs/orangefs">fs/orangefs</option>
+            <option value="fs/overlayfs">fs/overlayfs</option>
+            <option value="fs/partitions">fs/partitions</option>
+            <option value="fs/proc">fs/proc</option>
+            <option value="fs/pstore">fs/pstore</option>
+            <option value="fs/qnx4">fs/qnx4</option>
+            <option value="fs/qnx6">fs/qnx6</option>
+            <option value="fs/quota">fs/quota</option>
+            <option value="fs/ramfs">fs/ramfs</option>
+            <option value="fs/reiserfs">fs/reiserfs</option>
+            <option value="fs/relayfs">fs/relayfs</option>
+            <option value="fs/romfs">fs/romfs</option>
+            <option value="fs/smbfs">fs/smbfs</option>
+            <option value="fs/smbfs_common">fs/smbfs_common</option>
+            <option value="fs/squashfs">fs/squashfs</option>
+            <option value="fs/sysfs">fs/sysfs</option>
+            <option value="fs/sysv">fs/sysv</option>
+            <option value="fs/tracefs">fs/tracefs</option>
+            <option value="fs/ubifs">fs/ubifs</option>
+            <option value="fs/udf">fs/udf</option>
+            <option value="fs/ufs">fs/ufs</option>
+            <option value="fs/umsdos">fs/umsdos</option>
+            <option value="fs/unicode">fs/unicode</option>
+            <option value="fs/vboxsf">fs/vboxsf</option>
+            <option value="fs/verity">fs/verity</option>
+            <option value="fs/vfat">fs/vfat</option>
+            <option value="fs/xfs">fs/xfs</option>
+            <option value="fs/zonefs">fs/zonefs</option>
+            <option value="gpu">gpu</option>
+            <option value="gpu/drm">gpu/drm</option>
+            <option value="include">include</option>
+            <option value="include/acpi">include/acpi</option>
+            <option value="include/asm-alpha">include/asm-alpha</option>
+            <option value="include/asm-arm">include/asm-arm</option>
+            <option value="include/asm-arm26">include/asm-arm26</option>
+            <option value="include/asm-avr32">include/asm-avr32</option>
+            <option value="include/asm-blackfin">include/asm-blackfin</option>
+            <option value="include/asm-cris">include/asm-cris</option>
+            <option value="include/asm-frv">include/asm-frv</option>
+            <option value="include/asm-generic">include/asm-generic</option>
+            <option value="include/asm-h8300">include/asm-h8300</option>
+            <option value="include/asm-i386">include/asm-i386</option>
+            <option value="include/asm-ia64">include/asm-ia64</option>
+            <option value="include/asm-m32r">include/asm-m32r</option>
+            <option value="include/asm-m68k">include/asm-m68k</option>
+            <option value="include/asm-m68knommu">include/asm-m68knommu</option>
+            <option value="include/asm-mips">include/asm-mips</option>
+            <option value="include/asm-mn10300">include/asm-mn10300</option>
+            <option value="include/asm-parisc">include/asm-parisc</option>
+            <option value="include/asm-powerpc">include/asm-powerpc</option>
+            <option value="include/asm-ppc">include/asm-ppc</option>
+            <option value="include/asm-ppc64">include/asm-ppc64</option>
+            <option value="include/asm-s390">include/asm-s390</option>
+            <option value="include/asm-sh">include/asm-sh</option>
+            <option value="include/asm-sh64">include/asm-sh64</option>
+            <option value="include/asm-sparc">include/asm-sparc</option>
+            <option value="include/asm-sparc64">include/asm-sparc64</option>
+            <option value="include/asm-um">include/asm-um</option>
+            <option value="include/asm-v850">include/asm-v850</option>
+            <option value="include/asm-x86">include/asm-x86</option>
+            <option value="include/asm-x86_64">include/asm-x86_64</option>
+            <option value="include/asm-xtensa">include/asm-xtensa</option>
+            <option value="include/clocksource">include/clocksource</option>
+            <option value="include/crypto">include/crypto</option>
+            <option value="include/drm">include/drm</option>
+            <option value="include/dt-bindings">include/dt-bindings</option>
+            <option value="include/keys">include/keys</option>
+            <option value="include/kunit">include/kunit</option>
+            <option value="include/kvm">include/kvm</option>
+            <option value="include/linux">include/linux</option>
+            <option value="include/math-emu">include/math-emu</option>
+            <option value="include/media">include/media</option>
+            <option value="include/memory">include/memory</option>
+            <option value="include/misc">include/misc</option>
+            <option value="include/mtd">include/mtd</option>
+            <option value="include/net">include/net</option>
+            <option value="include/pcmcia">include/pcmcia</option>
+            <option value="include/ras">include/ras</option>
+            <option value="include/rdma">include/rdma</option>
+            <option value="include/rv">include/rv</option>
+            <option value="include/rxrpc">include/rxrpc</option>
+            <option value="include/scsi">include/scsi</option>
+            <option value="include/soc">include/soc</option>
+            <option value="include/sound">include/sound</option>
+            <option value="include/target">include/target</option>
+            <option value="include/trace">include/trace</option>
+            <option value="include/uapi">include/uapi</option>
+            <option value="include/ufs">include/ufs</option>
+            <option value="include/vdso">include/vdso</option>
+            <option value="include/video">include/video</option>
+            <option value="include/xen">include/xen</option>
+            <option value="init">init</option>
+            <option value="io_uring">io_uring</option>
+            <option value="ipc">ipc</option>
+            <option value="kernel">kernel</option>
+            <option value="kernel/bpf">kernel/bpf</option>
+            <option value="kernel/cgroup">kernel/cgroup</option>
+            <option value="kernel/configs">kernel/configs</option>
+            <option value="kernel/cpu">kernel/cpu</option>
+            <option value="kernel/debug">kernel/debug</option>
+            <option value="kernel/dma">kernel/dma</option>
+            <option value="kernel/entry">kernel/entry</option>
+            <option value="kernel/events">kernel/events</option>
+            <option value="kernel/futex">kernel/futex</option>
+            <option value="kernel/gcov">kernel/gcov</option>
+            <option value="kernel/irq">kernel/irq</option>
+            <option value="kernel/kcsan">kernel/kcsan</option>
+            <option value="kernel/livepatch">kernel/livepatch</option>
+            <option value="kernel/locking">kernel/locking</option>
+            <option value="kernel/module">kernel/module</option>
+            <option value="kernel/power">kernel/power</option>
+            <option value="kernel/printk">kernel/printk</option>
+            <option value="kernel/rcu">kernel/rcu</option>
+            <option value="kernel/sched">kernel/sched</option>
+            <option value="kernel/time">kernel/time</option>
+            <option value="kernel/trace">kernel/trace</option>
+            <option value="lib">lib</option>
+            <option value="lib/842">lib/842</option>
+            <option value="lib/crypto">lib/crypto</option>
+            <option value="lib/dim">lib/dim</option>
+            <option value="lib/fonts">lib/fonts</option>
+            <option value="lib/kunit">lib/kunit</option>
+            <option value="lib/livepatch">lib/livepatch</option>
+            <option value="lib/lz4">lib/lz4</option>
+            <option value="lib/lzo">lib/lzo</option>
+            <option value="lib/math">lib/math</option>
+            <option value="lib/mpi">lib/mpi</option>
+            <option value="lib/pldmfw">lib/pldmfw</option>
+            <option value="lib/raid6">lib/raid6</option>
+            <option value="lib/reed_solomon">lib/reed_solomon</option>
+            <option value="lib/vdso">lib/vdso</option>
+            <option value="lib/xz">lib/xz</option>
+            <option value="lib/zlib_deflate">lib/zlib_deflate</option>
+            <option value="lib/zlib_dfltcc">lib/zlib_dfltcc</option>
+            <option value="lib/zlib_inflate">lib/zlib_inflate</option>
+            <option value="lib/zstd">lib/zstd</option>
+            <option value="mm">mm</option>
+            <option value="mm/damon">mm/damon</option>
+            <option value="mm/kasan">mm/kasan</option>
+            <option value="mm/kfence">mm/kfence</option>
+            <option value="net">net</option>
+            <option value="net/6lowpan">net/6lowpan</option>
+            <option value="net/802">net/802</option>
+            <option value="net/8021q">net/8021q</option>
+            <option value="net/9p">net/9p</option>
+            <option value="net/appletalk">net/appletalk</option>
+            <option value="net/atm">net/atm</option>
+            <option value="net/ax25">net/ax25</option>
+            <option value="net/batman-adv">net/batman-adv</option>
+            <option value="net/bluetooth">net/bluetooth</option>
+            <option value="net/bpf">net/bpf</option>
+            <option value="net/bpfilter">net/bpfilter</option>
+            <option value="net/bridge">net/bridge</option>
+            <option value="net/caif">net/caif</option>
+            <option value="net/can">net/can</option>
+            <option value="net/ceph">net/ceph</option>
+            <option value="net/core">net/core</option>
+            <option value="net/dcb">net/dcb</option>
+            <option value="net/dccp">net/dccp</option>
+            <option value="net/decnet">net/decnet</option>
+            <option value="net/dns_resolver">net/dns_resolver</option>
+            <option value="net/dsa">net/dsa</option>
+            <option value="net/econet">net/econet</option>
+            <option value="net/ethernet">net/ethernet</option>
+            <option value="net/ethtool">net/ethtool</option>
+            <option value="net/hsr">net/hsr</option>
+            <option value="net/ieee80211">net/ieee80211</option>
+            <option value="net/ieee802154">net/ieee802154</option>
+            <option value="net/ife">net/ife</option>
+            <option value="net/ipv4">net/ipv4</option>
+            <option value="net/ipv6">net/ipv6</option>
+            <option value="net/ipx">net/ipx</option>
+            <option value="net/irda">net/irda</option>
+            <option value="net/iucv">net/iucv</option>
+            <option value="net/kcm">net/kcm</option>
+            <option value="net/key">net/key</option>
+            <option value="net/l2tp">net/l2tp</option>
+            <option value="net/l3mdev">net/l3mdev</option>
+            <option value="net/lapb">net/lapb</option>
+            <option value="net/llc">net/llc</option>
+            <option value="net/mac80211">net/mac80211</option>
+            <option value="net/mac802154">net/mac802154</option>
+            <option value="net/mctp">net/mctp</option>
+            <option value="net/mpls">net/mpls</option>
+            <option value="net/mptcp">net/mptcp</option>
+            <option value="net/ncsi">net/ncsi</option>
+            <option value="net/netfilter">net/netfilter</option>
+            <option value="net/netlabel">net/netlabel</option>
+            <option value="net/netlink">net/netlink</option>
+            <option value="net/netrom">net/netrom</option>
+            <option value="net/nfc">net/nfc</option>
+            <option value="net/nsh">net/nsh</option>
+            <option value="net/openvswitch">net/openvswitch</option>
+            <option value="net/packet">net/packet</option>
+            <option value="net/phonet">net/phonet</option>
+            <option value="net/psample">net/psample</option>
+            <option value="net/qrtr">net/qrtr</option>
+            <option value="net/rds">net/rds</option>
+            <option value="net/rfkill">net/rfkill</option>
+            <option value="net/rose">net/rose</option>
+            <option value="net/rxrpc">net/rxrpc</option>
+            <option value="net/sched">net/sched</option>
+            <option value="net/sctp">net/sctp</option>
+            <option value="net/smc">net/smc</option>
+            <option value="net/strparser">net/strparser</option>
+            <option value="net/sunrpc">net/sunrpc</option>
+            <option value="net/switchdev">net/switchdev</option>
+            <option value="net/tipc">net/tipc</option>
+            <option value="net/tls">net/tls</option>
+            <option value="net/unix">net/unix</option>
+            <option value="net/vmw_vsock">net/vmw_vsock</option>
+            <option value="net/wanrouter">net/wanrouter</option>
+            <option value="net/wimax">net/wimax</option>
+            <option value="net/wireless">net/wireless</option>
+            <option value="net/x25">net/x25</option>
+            <option value="net/xdp">net/xdp</option>
+            <option value="net/xfrm">net/xfrm</option>
+            <option value="ret.ou">ret.ou</option>
+            <option value="rust">rust</option>
+            <option value="rust/alloc">rust/alloc</option>
+            <option value="rust/bindings">rust/bindings</option>
+            <option value="rust/macros">rust/macros</option>
+            <option value="samples">samples</option>
+            <option value="samples/acrn">samples/acrn</option>
+            <option value="samples/auxdisplay">samples/auxdisplay</option>
+            <option value="samples/binderfs">samples/binderfs</option>
+            <option value="samples/blackfin">samples/blackfin</option>
+            <option value="samples/bpf">samples/bpf</option>
+            <option value="samples/configfs">samples/configfs</option>
+            <option value="samples/connector">samples/connector</option>
+            <option value="samples/coresight">samples/coresight</option>
+            <option value="samples/fanotify">samples/fanotify</option>
+            <option value="samples/firmware_class">samples/firmware_class</option>
+            <option value="samples/fprobe">samples/fprobe</option>
+            <option value="samples/ftrace">samples/ftrace</option>
+            <option value="samples/hidraw">samples/hidraw</option>
+            <option value="samples/hw_breakpoint">samples/hw_breakpoint</option>
+            <option value="samples/kdb">samples/kdb</option>
+            <option value="samples/kfifo">samples/kfifo</option>
+            <option value="samples/kobject">samples/kobject</option>
+            <option value="samples/kprobes">samples/kprobes</option>
+            <option value="samples/landlock">samples/landlock</option>
+            <option value="samples/livepatch">samples/livepatch</option>
+            <option value="samples/markers">samples/markers</option>
+            <option value="samples/mei">samples/mei</option>
+            <option value="samples/mic">samples/mic</option>
+            <option value="samples/nitro_enclaves">samples/nitro_enclaves</option>
+            <option value="samples/pidfd">samples/pidfd</option>
+            <option value="samples/pktgen">samples/pktgen</option>
+            <option value="samples/qmi">samples/qmi</option>
+            <option value="samples/rpmsg">samples/rpmsg</option>
+            <option value="samples/rust">samples/rust</option>
+            <option value="samples/seccomp">samples/seccomp</option>
+            <option value="samples/sockmap">samples/sockmap</option>
+            <option value="samples/statx">samples/statx</option>
+            <option value="samples/timers">samples/timers</option>
+            <option value="samples/trace_events">samples/trace_events</option>
+            <option value="samples/trace_printk">samples/trace_printk</option>
+            <option value="samples/tracepoints">samples/tracepoints</option>
+            <option value="samples/uhid">samples/uhid</option>
+            <option value="samples/vfio-mdev">samples/vfio-mdev</option>
+            <option value="samples/vfs">samples/vfs</option>
+            <option value="samples/watch_queue">samples/watch_queue</option>
+            <option value="samples/watchdog">samples/watchdog</option>
+            <option value="scripts">scripts</option>
+            <option value="scripts/atomic">scripts/atomic</option>
+            <option value="scripts/basic">scripts/basic</option>
+            <option value="scripts/clang-tools">scripts/clang-tools</option>
+            <option value="scripts/coccinelle">scripts/coccinelle</option>
+            <option value="scripts/dtc">scripts/dtc</option>
+            <option value="scripts/dummy-tools">scripts/dummy-tools</option>
+            <option value="scripts/gcc-plugins">scripts/gcc-plugins</option>
+            <option value="scripts/gdb">scripts/gdb</option>
+            <option value="scripts/genksyms">scripts/genksyms</option>
+            <option value="scripts/kconfig">scripts/kconfig</option>
+            <option value="scripts/ksymoops">scripts/ksymoops</option>
+            <option value="scripts/lxdialog">scripts/lxdialog</option>
+            <option value="scripts/mod">scripts/mod</option>
+            <option value="scripts/package">scripts/package</option>
+            <option value="scripts/rt-tester">scripts/rt-tester</option>
+            <option value="scripts/selinux">scripts/selinux</option>
+            <option value="scripts/trace">scripts/trace</option>
+            <option value="scripts/tracing">scripts/tracing</option>
+            <option value="security">security</option>
+            <option value="security/apparmor">security/apparmor</option>
+            <option value="security/bpf">security/bpf</option>
+            <option value="security/integrity">security/integrity</option>
+            <option value="security/keys">security/keys</option>
+            <option value="security/landlock">security/landlock</option>
+            <option value="security/loadpin">security/loadpin</option>
+            <option value="security/lockdown">security/lockdown</option>
+            <option value="security/safesetid">security/safesetid</option>
+            <option value="security/selinux">security/selinux</option>
+            <option value="security/smack">security/smack</option>
+            <option value="security/tomoyo">security/tomoyo</option>
+            <option value="security/yama">security/yama</option>
+            <option value="sound">sound</option>
+            <option value="sound/ac97">sound/ac97</option>
+            <option value="sound/aoa">sound/aoa</option>
+            <option value="sound/arm">sound/arm</option>
+            <option value="sound/atmel">sound/atmel</option>
+            <option value="sound/core">sound/core</option>
+            <option value="sound/drivers">sound/drivers</option>
+            <option value="sound/firewire">sound/firewire</option>
+            <option value="sound/hda">sound/hda</option>
+            <option value="sound/i2c">sound/i2c</option>
+            <option value="sound/isa">sound/isa</option>
+            <option value="sound/mips">sound/mips</option>
+            <option value="sound/oss">sound/oss</option>
+            <option value="sound/parisc">sound/parisc</option>
+            <option value="sound/pci">sound/pci</option>
+            <option value="sound/pcmcia">sound/pcmcia</option>
+            <option value="sound/ppc">sound/ppc</option>
+            <option value="sound/sh">sound/sh</option>
+            <option value="sound/soc">sound/soc</option>
+            <option value="sound/sparc">sound/sparc</option>
+            <option value="sound/spi">sound/spi</option>
+            <option value="sound/synth">sound/synth</option>
+            <option value="sound/usb">sound/usb</option>
+            <option value="sound/virtio">sound/virtio</option>
+            <option value="sound/x86">sound/x86</option>
+            <option value="sound/xen">sound/xen</option>
+            <option value="sound/{pci">sound/{pci</option>
+            <option value="tools">tools</option>
+            <option value="tools/accounting">tools/accounting</option>
+            <option value="tools/arch">tools/arch</option>
+            <option value="tools/bootconfig">tools/bootconfig</option>
+            <option value="tools/bpf">tools/bpf</option>
+            <option value="tools/build">tools/build</option>
+            <option value="tools/cgroup">tools/cgroup</option>
+            <option value="tools/counter">tools/counter</option>
+            <option value="tools/crypto">tools/crypto</option>
+            <option value="tools/debugging">tools/debugging</option>
+            <option value="tools/firewire">tools/firewire</option>
+            <option value="tools/firmware">tools/firmware</option>
+            <option value="tools/gpio">tools/gpio</option>
+            <option value="tools/hv">tools/hv</option>
+            <option value="tools/iio">tools/iio</option>
+            <option value="tools/include">tools/include</option>
+            <option value="tools/io_uring">tools/io_uring</option>
+            <option value="tools/kvm">tools/kvm</option>
+            <option value="tools/laptop">tools/laptop</option>
+            <option value="tools/leds">tools/leds</option>
+            <option value="tools/lguest">tools/lguest</option>
+            <option value="tools/lib">tools/lib</option>
+            <option value="tools/memory-model">tools/memory-model</option>
+            <option value="tools/net">tools/net</option>
+            <option value="tools/nfsd">tools/nfsd</option>
+            <option value="tools/objtool">tools/objtool</option>
+            <option value="tools/pci">tools/pci</option>
+            <option value="tools/pcmcia">tools/pcmcia</option>
+            <option value="tools/perf">tools/perf</option>
+            <option value="tools/power">tools/power</option>
+            <option value="tools/rcu">tools/rcu</option>
+            <option value="tools/scripts">tools/scripts</option>
+            <option value="tools/slub">tools/slub</option>
+            <option value="tools/spi">tools/spi</option>
+            <option value="tools/testing">tools/testing</option>
+            <option value="tools/thermal">tools/thermal</option>
+            <option value="tools/tracing">tools/tracing</option>
+            <option value="tools/usb">tools/usb</option>
+            <option value="tools/verification">tools/verification</option>
+            <option value="tools/virtio">tools/virtio</option>
+            <option value="tools/vm">tools/vm</option>
+            <option value="tools/wmi">tools/wmi</option>
+            <option value="usr">usr</option>
+            <option value="usr/dummy-include">usr/dummy-include</option>
+            <option value="usr/include">usr/include</option>
+            <option value="virt">virt</option>
+            <option value="virt/kvm">virt/kvm</option>
+            <option value="virt/lib">virt/lib</option>
+            <option value="vm">vm</option>            
+        </select>  
+      
+        <select class="input" type="text" id="yearInput">
+            <option value="2002">2002</option>
+            <option value="2003">2003</option>
+            <option value="2004">2004</option>
+            <option value="2005">2005</option>
+            <option value="2006">2006</option>
+            <option value="2007">2007</option>
+            <option value="2008">2008</option>
+            <option value="2009">2009</option>
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+        </select>
+    </div>
+
+    <div id="TOTYear" style="width:80%; height:30%;display:block ;position: absolute; top:65%; left:10%"></div>
+    <div id="TOTMonth" style="width:80%; height:30%;display:block ;position: absolute; top:100%; left:10%"></div>
+    <div id="CIYear" style="width:80%; height:30%;display:block ;position: absolute; top:135%; left:10%"></div>
+    <div id="CIMonth" style="width:80%; height:30%;display:block ;position: absolute; top:170%; left:10%"></div>    
+
+
+    <script>
+
+        TOTYearChart = echarts.init(document.getElementById('TOTYear'), 'dark');
+        TOTMonthChart = echarts.init(document.getElementById('TOTMonth'), 'dark');
+        CIYearChart = echarts.init(document.getElementById('CIYear'), 'dark');
+        CIMonthChart = echarts.init(document.getElementById('CIMonth'), 'dark');
+
+        // const leftItems = Array.from(leftList.getElementsByTagName('div'));
+        // 获取左侧列表和右侧列表的DOM元素
+        const leftList = document.getElementById('leftList');
+        const rightList = document.getElementById('rightList');
+
+        // 存储当前选中的项
+        let selectedItem = null;
+
+        // 检查是否需要禁用按钮
+        function checkButtonState() {
+
+            const leftItems = Array.from(leftList.getElementsByTagName('div'));
+            // alert(leftItems.length);
+            if (leftItems.length >= 4 ||selectedItem === null || leftList.contains(selectedItem)) {
+                // 如果没有选中项或者选中项在左侧列表中，禁用按钮
+                document.getElementById('moveButton').disabled = true;
+            } else {
+                // 否则启用按钮
+                document.getElementById('moveButton').disabled = false;
+            }
+
+            if (leftItems.length == 0 ||selectedItem === null || rightList.contains(selectedItem)) {
+                // 如果没有选中项或者选中项在左侧列表中，禁用按钮
+                document.getElementById('moveButton2').disabled = true;
+            } else {
+                // 否则启用按钮
+                document.getElementById('moveButton2').disabled = false;
+            }
+
+            if (leftItems.length >= 2){
+                document.getElementById('compareButton').disabled = false;
+            } else {
+                document.getElementById('compareButton').disabled = true;
+            }
+
+        }
+
+        // 页面加载完成后检查按钮状态
+        window.addEventListener('load', checkButtonState);
+
+        // 点击列表项来选择
+        function selectItem(item) {
+            if (selectedItem !== null) {
+                // 取消之前选中的行
+                selectedItem.style.backgroundColor = '';
+            }
+
+            // 选中当前行
+            item.style.backgroundColor = 'lightblue';
+            selectedItem = item;
+
+            // 检查按钮状态
+            checkButtonState();
+        }
+
+        // 移动选中的项到左侧列表
+        function moveSelectedItem() {
+            leftList.appendChild(selectedItem);
+            selectedItem.style.backgroundColor = ''; // 取消选中状态
+            selectedItem = null;
+
+            // 获取左侧列表中所有项
+            const items = Array.from(leftList.getElementsByTagName('div'));
+
+            // 对左侧列表项按字母顺序排序
+            items.sort((a, b) => a.textContent.localeCompare(b.textContent));
+
+            // 清空左侧列表
+            while (leftList.firstChild) {
+                leftList.removeChild(leftList.firstChild);
+            }
+
+            // 重新添加已排序的项到左侧列表
+            items.forEach(item => leftList.appendChild(item));
+
+            // 禁用按钮
+            document.getElementById('moveButton').disabled = true;
+            checkButtonState();
+        }
+        // 移动选中的项到右侧列表
+        function moveSelectedItem2() {
+            rightList.appendChild(selectedItem);
+            selectedItem.style.backgroundColor = ''; // 取消选中状态
+            selectedItem = null;
+
+            // 获取左侧列表中所有项
+            const items = Array.from(rightList.getElementsByTagName('div'));
+
+            // 对左侧列表项按字母顺序排序
+            items.sort((a, b) => a.textContent.localeCompare(b.textContent));
+
+            // 清空左侧列表
+            while (rightList.firstChild) {
+                rightList.removeChild(rightList.firstChild);
+            }
+
+            // 重新添加已排序的项到左侧列表
+            items.forEach(item => rightList.appendChild(item));
+
+            // 禁用按钮
+            document.getElementById('moveButton').disabled = true;
+            checkButtonState();
+        }
+        function Compare() {
+            var select = document.getElementById("moduleInput");
+            var value = select.value;
+            // alert(value);
+            let mode = 1;
+            if(value.includes("/")) {
+                mode = 2;
+            }
+            var selectyear = document.getElementById("yearInput");
+            var year = selectyear.value;
+
+            var names = [];
+            var divs = document.querySelectorAll('#leftList div');
+            divs.forEach(function(div) {
+                var name = div.textContent; 
+                names.push(name);
+            });
+            // alert(names);
+            // alert("!!!")
+            runScript3(names, year, mode, value);
+        }
+    </script>
+</body>
+</html>

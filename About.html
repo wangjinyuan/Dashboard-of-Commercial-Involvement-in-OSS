@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>About</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+  .container {  
+    display: flex;  
+    align-items: center;  
+  }  
+  
+  .image {  
+    width: 30%;  
+    padding-right: 20px;  
+  }  
+  
+  .text {  
+    width: 60%;  
+  }  
+    </style>
+    <link href="header.css?version=4" rel="stylesheet" style="text/css"/>
+    <link href="SearchDropdown.css" rel="stylesheet" style="text/css"/>
+</head>
+<body>
+<div class="header" aos="fade-down">
+        <div class="hcontainer">
+                <div class="box">
+                    <a href="#" class="item">About</a>
+                    <a href="Mainpage.html" class="item">Mainpage</a>
+                    <a href="CiCe.html" class="item">Contribution Model</a>
+                    <a href="Comp.html" class="item">Comparation</a>
+                    <a href="Diag.html" class="item">Network Diagram</a>
+                </div>
+        </div>
+    </div>
+<p><br/><br/></p>
+
+<h1>About us</h1>
+<p>Welcome to <em>Dashboard of Commercial Involvement in OSS</em>! Our platform is dedicated to providing valuable insights and data-driven analysis of corporate participation in open-source communities.</p>
+
+<h3>What We Do</h3>
+<p><em>Data Collection:</em> We gather data from various open-source repositories, including the <a href="https://github.com/torvalds/linux" class="item">Linux Kernel on GitHub</a>, as well as the website <a href="https://linux-commits-search.typesense.org" class="item">Linux Commits Search</a>, to provide you with a comprehensive view of corporate contributions.</p>
+<p><em>Charts and Analysis:</em> Our platform offers a wide range of metrics and analytics tools, allowing you to explore how companies engage with open source.</p>
+<p><em>Temporal Comparison:</em> Analyze corporate contributions over time, enabling comparisons of the same company's involvement across different timeframes. Explore intersections between different companies or projects to gain a multifaceted perspective on the data.</p>
+
+<h3>Get Started</h3>
+<ul>  
+<li>  
+<b>Mainpage</b>  
+<p>In the Mainpage, you can see a graph of the overall trend of company and individual participation in contributing to the open source community. You can hover over the chart to see the amount of contributions at specific points in time. At the same time, we show a few companies that have contributed the most in the last year. You can discover points of interest from the overview and go to other modules to explore them for a deeper understanding.</p>  
+</li>  
+<li>  
+<b>Contribution Model</b>  
+<div class="container">  
+<div class="image">  
+<img src="img/cice.png" style="width: 100%;" alt="CiCe">
+</div>  
+<div class="text">  
+<p>The total number of contributions by all users is calculated over time, and contributions are separated into categories of volunteers and company contributions.</p>  
+</div>  
+</div> 
+</li>
+<li>  
+<b>Comparation</b>  
+<p>Information for a selected company is retrieved for a specific year and module, including CI and CE, with CE representing the module's contribution proportion. Yearly contribution trends are also displayed.</p>  
+</li>
+<li>  
+<b>Network Diagram</b>  
+<p>In the Network Diagram, you are presented with a network diagram showing which modules the company has contributed to. The blue nodes in the network diagram represent companies, the red nodes represent modules, and the edges represent relationships between companies and modules. The user can hover over the nodes to see which companies have contributed to the module, or which modules the company has contributed to.</p>  
+</li>  
+</ul>
+
+</body>
+</html>

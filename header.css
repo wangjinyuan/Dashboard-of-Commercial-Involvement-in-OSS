@@ -1,0 +1,43 @@
+.header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    margin-top: 0;
+    background-color: #1f2339;
+    width: 100%;
+    padding: 0;
+    transition: all 0.2s;
+}
+.header.hcontainer {
+    background-color: #1f2339;
+    border-radius: 4px;
+    padding: 0;
+}
+.header .box {
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    left: 5%;
+    position: relative;
+}
+.header .box .item {
+    width: 16%;
+    text-align: center;
+    font-size: 18px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #FFFFFF;
+    line-height: 28px;
+    opacity: 0.7;
+    position: relative;
+    transition: 0.8s;
+}
+.header .box .item:hover {
+    color: #BDFCC9;
+    opacity: 0.9;
+    transform: scale(1.2);
+}
+a {
+    text-decoration: none;
+}

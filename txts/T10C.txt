@@ -1,0 +1,2 @@
+Verma,Bennée,Chris,Viro&Grubb,Chehab,Iwai,Skeggs,Wilson,Melo&Olsa,Gleixner
+4.2095, 2.5338, 1.8453, 1.4490, 0.8115, 0.7235, 0.6912, 0.6402, 0.6317, 0.5814

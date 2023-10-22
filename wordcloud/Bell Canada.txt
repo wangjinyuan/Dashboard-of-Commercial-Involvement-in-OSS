@@ -1,0 +1,15 @@
+init/main.c,2
+fix,2
+warning,2
+mark,1
+do_one_initcall*,1
+__init_or_module,1
+'calltime.tv64',1
+may,1
+uninitialized,1
+pm,1
+runtime,1
+typo,1
+status,1
+comparison,1
+causing,1

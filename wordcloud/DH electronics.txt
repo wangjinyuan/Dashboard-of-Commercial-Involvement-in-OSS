@@ -1,0 +1,17 @@
+drm/panel,2
+simple,2
+drm/imx,1
+parallel-display,1
+remove,1
+bus,1
+flags,1
+check,1
+imx_pd_bridge_atomic_check(),1
+assign,1
+data,1
+panel_dpi_probe(),1
+correctly,1
+add,1
+multi-inno,1
+technology,1
+mi0800ft-9,1

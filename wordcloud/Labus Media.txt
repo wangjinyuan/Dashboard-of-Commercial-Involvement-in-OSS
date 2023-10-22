@@ -1,0 +1,6 @@
+platform/x86,1
+gigabyte-wmi,1
+add,1
+x570,1
+aorus,1
+elite,1

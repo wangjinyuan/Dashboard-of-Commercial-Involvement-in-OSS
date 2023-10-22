@@ -1,0 +1,11 @@
+[patch],4
+driver_for_each_device(),2
+drivers/pnp/driver.c,2
+instead,2
+manually,2
+walking,2
+list.,2
+move,2
+device/driver,2
+code,2
+drivers/base/dd.c,2

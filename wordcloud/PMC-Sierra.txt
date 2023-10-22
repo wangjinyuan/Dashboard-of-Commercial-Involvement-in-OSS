@@ -1,0 +1,7 @@
+compilation,3
+warning,3
+fix,3
+drivers/net/tlan.c,1
+drivers/net/cs89x0.c,1
+[atm],1
+drivers/atm/iphase.c,1

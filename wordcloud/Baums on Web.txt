@@ -1,0 +1,11 @@
+v4l/dvb,1
+(5114),1
+cx88,1
+add,1
+support,1
+svideo/composite,1
+input,1
+terratec,1
+cinergy,1
+1400,1
+dvb-t,1

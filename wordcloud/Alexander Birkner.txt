@@ -1,0 +1,5 @@
+platform/x86,1
+thinkpad_acpi,1
+add,1
+thinkpad,1
+privacyguard,1

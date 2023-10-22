@@ -1,0 +1,17 @@
+usb/isp1760,2
+let,1
+bindings,1
+depend,1
+general,1
+config_of,1
+instead,1
+ppc_of,1
+.,1
+allow,1
+optionally,1
+trigger,1
+low-level,1
+chip,1
+reset,1
+via,1
+gpiolib.,1

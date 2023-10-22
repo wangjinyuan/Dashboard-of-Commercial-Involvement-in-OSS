@@ -1,0 +1,14 @@
+device,2
+tree,2
+powerpc/44x,1
+add,1
+hwmon,1
+support,1
+sequoia,1
+powerpc/4xx,1
+allow,1
+4xx,1
+pci,1
+bridge,1
+disabled,1
+via,1

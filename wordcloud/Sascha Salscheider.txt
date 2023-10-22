@@ -1,0 +1,15 @@
+drm/radeon,3
+vram,2
+properly,1
+handle,1
+ddc,1
+probe,1
+dp,1
+bridges,1
+remove,1
+superfluous,1
+variable,1
+fix,1
+calculation,1
+>=,1
+4gb,1

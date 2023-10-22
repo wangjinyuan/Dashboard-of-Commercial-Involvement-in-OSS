@@ -1,0 +1,10 @@
+[ipv6],1
+remove,1
+three,1
+method,1
+declarations,1
+include/net/ndisc.h.,1
+documentation/sysctl/net.txt,1
+fix,1
+(attribute,1
+removal).,1

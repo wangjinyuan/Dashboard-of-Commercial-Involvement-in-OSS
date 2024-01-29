@@ -5,26 +5,21 @@
     <meta charset="utf-8" />
     <title>About</title>
     <style>
-        table {
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-        }
-  .container {  
-    display: flex;  
-    align-items: center;  
-  }  
-  
-  .image {  
-    width: 30%;  
-    padding-right: 20px;  
-  }  
-  
-  .text {  
-    width: 60%;  
-  }  
+    .container {
+      display: flex;
+    }
+    .text {
+      flex: 3; 
+      padding: 20px;
+    }
+    .gif {
+      flex: 7; 
+    }
+    .gif img {
+      max-width: 100%;
+      height: auto;
+      display: block; 
+    }
     </style>
     <link href="header.css?version=4" rel="stylesheet" style="text/css"/>
     <link href="SearchDropdown.css" rel="stylesheet" style="text/css"/>
@@ -44,12 +39,44 @@
 <p><br/><br/></p>
 
 <h1>About us</h1>
-<p>Welcome to <em>Dashboard of Commercial Involvement in OSS</em>! Our platform is dedicated to providing valuable insights and data-driven analysis of corporate participation in open-source communities.</p>
+<p>Welcome to <em>Dashboard of Commercial Involvement in OSS</em>. Our platform is dedicated to providing valuable insights and data-driven analysis of corporate participation in open-source communities.</p>
 
 <h3>What We Do</h3>
 <p><em>Data Collection:</em> We gather data from various open-source repositories, including the <a href="https://github.com/torvalds/linux" class="item">Linux Kernel on GitHub</a>, as well as the website <a href="https://linux-commits-search.typesense.org" class="item">Linux Commits Search</a>, to provide you with a comprehensive view of corporate contributions.</p>
 <p><em>Charts and Analysis:</em> Our platform offers a wide range of metrics and analytics tools, allowing you to explore how companies engage with open source.</p>
 <p><em>Temporal Comparison:</em> Analyze corporate contributions over time, enabling comparisons of the same company's involvement across different timeframes. Explore intersections between different companies or projects to gain a multifaceted perspective on the data.</p>
+
+<h3>How Do We Preprocess Data</h3>
+  <div class="container">
+    <div class="text">
+<ul>  
+<li>  
+<em>Step 1</em>
+<p>Select one project, here we choose Linux Kernel</p>
+</li>  
+<li>  
+<em>Step 2</em>
+<p>Download the original data from Github: <br>
+git show --name-only --pretty=format:"%H"</p>
+</li>  
+<li>  
+<em>Step 3</em>
+<p>Remove the bots</p>
+</li>  
+<li>  
+<em>Step 4</em>
+<p>Merge multiple accounts under one developer</p>
+</li>  
+<li>  
+<em>Step 5</em>
+<p>Order the data, divide them into three tables for web to read and show</p>
+</li>  
+</ul>
+    </div>
+    <div class="gif">
+      <img src="img/show.gif" alt="">
+    </div>
+  </div>
 
 <h3>Get Started</h3>
 <ul>  
@@ -59,14 +86,7 @@
 </li>  
 <li>  
 <b>Contribution Model</b>  
-<div class="container">  
-<div class="image">  
-<img src="img/cice.png" style="width: 100%;" alt="CiCe">
-</div>  
-<div class="text">  
 <p>The total number of contributions by all users is calculated over time, and contributions are separated into categories of volunteers and company contributions.</p>  
-</div>  
-</div> 
 </li>
 <li>  
 <b>Comparation</b>  
@@ -77,6 +97,6 @@
 <p>In the Network Diagram, you are presented with a network diagram showing which modules the company has contributed to. The blue nodes in the network diagram represent companies, the red nodes represent modules, and the edges represent relationships between companies and modules. The user can hover over the nodes to see which companies have contributed to the module, or which modules the company has contributed to.</p>  
 </li>  
 </ul>
-
+</script>
 </body>
 </html>
